@@ -1,10 +1,12 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var bookTicketsPanel = React.createClass({
     dateClickHandler: function() {
-
+        console.log("click");
     },
 
    render: function() {
@@ -64,7 +66,7 @@ var bookTicketsPanel = React.createClass({
                                     </select>
                                 </div>
                           </div>
-                          <button type="submit" className="btn btn-primary btn-block" id="bookTicketButton">Book Tickets</button>
+                          <Link to="BookTickets"><button type="submit" className="btn btn-primary btn-block" id="bookTicketButton">Book Tickets</button></Link>
                       </form>
                     </div>
                   </div>
