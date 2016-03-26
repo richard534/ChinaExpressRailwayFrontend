@@ -1,0 +1,45 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 100px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #ffff;
+  background-color: #f8f8f8;
+}
+
+.navbar-nav {
+    line-height: 70px;
+    height: 100px;
+    padding-top: 0;
+}
+
+#headerRow {
+    padding-bottom: 10px;
+}
+
+.timeCombobox {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+}
+
+#timeCombobox2 {
+    padding-left: 10px;
+    padding-top: 23px;
+    padding-right: 0px;
+}
+
+#bookTicketButton {
+    margin-top: 100px;
+}
+
+#PopularRoutesHeading {
+    margin-bottom: 20px; 
+}

@@ -1,17 +1,29 @@
 "use strict";
 
 var React = require('react');
+var BookTicketsPanel = require('./bookTicketsPanel');
+var PopularRoutesPanel = require('./popularRoutesPanel');
 
-var Home = React.createClass({
+var passengerHomePage = React.createClass({
 
+    getInitialState: function() {
+        return {
+                sourceStation: "",
+                destinationStation: "",
+                departureDate: {}
+        };
+    },
 
    render: function() {
        return (
-         <div>
-           <h1>Hello!</h1>
-         </div>
+           <div className="container">
+               <BookTicketsPanel sourceStation={this.props.sourceStation}
+                   destinationStation={this.props.destinationStation}
+                   departureDate={this.props.departureDate} />
+               <PopularRoutesPanel />
+           </div>
        );
      }
 });
 
-module.exports = Home;
+module.exports = passengerHomePage;

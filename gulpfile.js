@@ -17,8 +17,7 @@ var config = {
 		js: './src/**/*.js',
 		img: './src/images/*',
 		css: [
-			'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+			'src/css/bootstrapSimplex.min.css',
 			'src/css/custom.css'
 		],
 		dist: './dist',
