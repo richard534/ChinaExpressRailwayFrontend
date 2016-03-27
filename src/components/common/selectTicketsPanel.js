@@ -5,6 +5,12 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 var selectTicketsPanel = React.createClass({
+    getDefaultProps: function() {
+        return {
+            backButtonLink: ""
+        };
+    },
+
    render: function() {
        return (
            <div className="col-md-8">
@@ -79,7 +85,7 @@ var selectTicketsPanel = React.createClass({
                            </table>
                    </div>
                </div>
-               <Link to="app"><button className="btn btn-primary">Back</button></Link>
+               <Link to={this.props.backButtonLink}><button className="btn btn-primary">Back</button></Link>
                <br/><br/>
            </div>
        );

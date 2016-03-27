@@ -5,6 +5,11 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 var ticketSummaryPanel = React.createClass({
+    getDefaultProps: function() {
+        return {
+            buttonLink: ""
+        };
+    },
 
 
    render: function() {
@@ -15,7 +20,7 @@ var ticketSummaryPanel = React.createClass({
                       <label>Total:</label>
                       <h2 id="total">£40.50</h2>
                       <br />
-                      <Link to="PaymentPage"><button type="submit" className="btn btn-primary btn-block">Continue</button></Link>
+                      <Link to={this.props.buttonLink}><button type="submit" className="btn btn-primary btn-block">Continue</button></Link>
                       <hr />
                       <div className='row'>
                           <div className="col-md-4">

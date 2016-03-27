@@ -11,7 +11,7 @@ var deliveryOptionPage = React.createClass({
        return (
             <div className="container">
                 <SelectDeliveryOptionPanel />
-                <TicketSummaryPanel />
+                <TicketSummaryPanel buttonLink="PaymentPage"/>
            </div>
        );
      }

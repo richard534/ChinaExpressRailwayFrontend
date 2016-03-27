@@ -5,6 +5,15 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 var bookTicketsPanel = React.createClass({
+    getDefaultProps: function() {
+        return {
+            buttonLink: "",
+            sourceStation: "",
+            destinationStation: "",
+            departureDate: {}
+        };
+    },
+
     dateClickHandler: function() {
         console.log("click");
     },
@@ -66,7 +75,7 @@ var bookTicketsPanel = React.createClass({
                                     </select>
                                 </div>
                           </div>
-                          <Link to="BookTickets"><button type="submit" className="btn btn-primary btn-block" id="bookTicketButton">Book Tickets</button></Link>
+                          <Link to={this.props.buttonLink}><button type="submit" className="btn btn-primary btn-block" id="bookTicketButton">Book Tickets</button></Link>
                       </form>
                     </div>
                   </div>

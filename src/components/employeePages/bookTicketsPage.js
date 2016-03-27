@@ -1,13 +1,11 @@
+/*
 "use strict";
 
 var React = require('react');
 var SelectTicketsPanel = require('../common/SelectTicketsPanel');
 var TicketSummaryPanel = require('../common/ticketSummaryPanel');
 
-// TODO populate h1 placeholders
-// TODO populate requested dates
-// TODO retrieve tickets using ajax call and diaplay viable tickets
-var BookTicketsPage = React.createClass({
+var EmployeeBookTicketsPage = React.createClass({
 
    render: function() {
        return (
@@ -19,4 +17,5 @@ var BookTicketsPage = React.createClass({
      }
 });
 
-module.exports = BookTicketsPage;
+module.exports = EmployeeBookTicketsPage;
+*/

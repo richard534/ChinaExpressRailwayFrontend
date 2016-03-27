@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var BookTicketsPanel = require('./bookTicketsPanel');
+var BookTicketsPanel = require('../common/bookTicketsPanel');
 var PopularRoutesPanel = require('./popularRoutesPanel');
 
 var passengerHomePage = React.createClass({
@@ -17,7 +17,8 @@ var passengerHomePage = React.createClass({
    render: function() {
        return (
            <div className="container">
-               <BookTicketsPanel sourceStation={this.props.sourceStation}
+               <BookTicketsPanel buttonLink="BookTickets"
+                   sourceStation={this.props.sourceStation}
                    destinationStation={this.props.destinationStation}
                    departureDate={this.props.departureDate} />
                <PopularRoutesPanel />
