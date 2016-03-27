@@ -13,7 +13,7 @@ var ticketSummaryPanel = React.createClass({
                <div className="panel panel-default">
                   <div className="panel-body">
                       <label>Total:</label>
-                      <h2 id="total">£40:50</h2>
+                      <h2 id="total">£40.50</h2>
                       <br />
                       <Link to="SelectDeliveryMethod"><button type="submit" className="btn btn-primary btn-block">Continue</button></Link>
                       <hr />
