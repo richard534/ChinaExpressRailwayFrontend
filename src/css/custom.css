@@ -40,12 +40,20 @@ footer {
     margin-top: 100px;
 }
 
+#reportButton {
+    margin-top: 30px;
+}
+
 #PopularRoutesHeading {
     margin-bottom: 20px;
 }
 
 .table tbody>tr>td.vert-align{
     vertical-align: middle;
+}
+
+.reportTextPadding {
+    padding-top: 30px;
 }
 
 .ticketBookMoney {
