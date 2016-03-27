@@ -13,6 +13,7 @@ var routes = (
       <DefaultRoute handler={require('./components/homePage/passengerHomePage')} />
       <Route name="BookTickets" handler={require('./components/bookingTickets/bookTicketsPage')} />
       <Route name="SelectDeliveryMethod" handler={require('./components/deliveryOption/deliveryOptionPage')} />
+      <Route name="PaymentPage" handler={require('./components/payment/paymentPage')} />
       <NotFoundRoute handler={require('./components/NotFoundPage')} />
     </Route>
 );

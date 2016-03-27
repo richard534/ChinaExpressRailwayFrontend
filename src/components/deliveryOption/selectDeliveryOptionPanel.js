@@ -11,6 +11,7 @@ var selectDeliveryOptionPanel = React.createClass({
                <div className="panel panel-default">
                   <div className="panel-body">
                       <h1>Select a Delivery Option</h1>
+                      <br/>
                         <ul className="list-group">
                             <li className="list-group-item clearfix">
                                 <div className="col-md-2">
