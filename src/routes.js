@@ -13,8 +13,8 @@ var routes = (
       <DefaultRoute handler={require('./components/passengerPages/passengerHomePage')} />
 
       <Route name="BookTickets" path="selectTickets/" handler={require('./components/passengerPages/bookTicketsPage')} />
-      <Route name="SelectDeliveryMethod" path="selectTickets/SelectDeliveryMethod/" handler={require('./components/deliveryOption/deliveryOptionPage')} />
-      <Route name="PaymentPage" path="selectTickets/SelectDeliveryMethod/paymentPage/" handler={require('./components/payment/paymentPage')} />
+      <Route name="SelectDeliveryMethod" path="selectTickets/SelectDeliveryMethod/" handler={require('./components/passengerPages/deliveryOptionPage')} />
+      <Route name="PaymentPage" path="selectTickets/SelectDeliveryMethod/paymentPage/" handler={require('./components/passengerPages/paymentPage')} />
 
       <Route name="EmployeeHome" path="employeeHomePage/" handler={require('./components/employeePages/employeeHomePage')} />
       <Route name="EmployeeBookTickets" path="employeeHomePage/employeeSelectTickets/" handler={require('./components/employeePages/EmployeeBookTicketsPage')} />

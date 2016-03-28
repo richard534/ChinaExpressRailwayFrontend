@@ -16,7 +16,7 @@ var StationTable = React.createClass({
                       <table className="table table-bordered table-striped">
                          <tr>
                             <td>ID</td>
-                            <td>Staion Name</td>
+                            <td>Station Name</td>
                             <td>Address</td>
                         </tr>
                         <tr>

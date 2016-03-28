@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var PaymentPanel = require('./paymentPanel.js');
+var PaymentPanel = require('./passengerPanels/paymentPanel.js');
 
 var paymentPage = React.createClass({
 

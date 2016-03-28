@@ -2,7 +2,7 @@
 
 var React = require('react');
 var BookTicketsPanel = require('../common/bookTicketsPanel');
-var PopularRoutesPanel = require('./popularRoutesPanel');
+var PopularRoutesPanel = require('./passengerPanels/popularRoutesPanel');
 
 var passengerHomePage = React.createClass({
 

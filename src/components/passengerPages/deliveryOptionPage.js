@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var SelectDeliveryOptionPanel = require('./selectDeliveryOptionPanel');
+var SelectDeliveryOptionPanel = require('./passengerPanels/selectDeliveryOptionPanel');
 var TicketSummaryPanel = require('../common/ticketSummaryPanel');
 
 var deliveryOptionPage = React.createClass({
