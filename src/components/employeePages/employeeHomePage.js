@@ -24,7 +24,7 @@ var employeeHomePage = React.createClass({
                    <div className="col-md-8">
                        <div className="panel panel-default">
                           <div className="panel-body">
-                               <h4>Delete Ticket</h4>
+                              <h4>Delete Ticket</h4>
                               <br/>
                                 <form className="form-horizontal">
                                   <div className="form-group">
@@ -42,7 +42,7 @@ var employeeHomePage = React.createClass({
                           <div className="panel panel-default">
                              <div className="panel-body">
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
-                                 <p className="reportTextPadding">Here you can generate a booked trains report</p>
+                                 <p className="smallPanelTextPadding">Here you can generate a booked trains report</p>
                                  <br/>
                                  <button type="submit" className="btn btn-primary btn-block" id="reportButton">Book Tickets</button>
                              </div>
@@ -52,7 +52,7 @@ var employeeHomePage = React.createClass({
                           <div className="panel panel-default">
                              <div className="panel-body">
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
-                                 <p className="reportTextPadding">Here you can generate a canceled trains report</p>
+                                 <p className="smallPanelTextPadding">Here you can generate a canceled trains report</p>
                                  <br/>
                                  <button type="submit" className="btn btn-primary btn-block" id="reportButton">Book Tickets</button>
                              </div>
