@@ -1,6 +1,8 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var AdminHomePage = React.createClass({
 
@@ -17,7 +19,7 @@ var AdminHomePage = React.createClass({
                            <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                            <p className="smallPanelTextPadding">Here you can manage the stations available on the system</p>
                            <br/>
-                           <button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Stations</button>
+                           <Link to="ManageStations"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Stations</button></Link>
                        </div>
                    </div>
                </div>
@@ -27,7 +29,7 @@ var AdminHomePage = React.createClass({
                           <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                           <p className="smallPanelTextPadding">Here you can manage trains that can be scheduled to routes</p>
                           <br/>
-                          <button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Trains</button>
+                          <Link to="ManageTrains"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Trains</button></Link>
                       </div>
                   </div>
               </div>
@@ -37,7 +39,7 @@ var AdminHomePage = React.createClass({
                          <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                          <p className="smallPanelTextPadding">Here you can manage the train schedule</p>
                          <br/>
-                         <button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Schedule</button>
+                         <Link to="ManageSchedule"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Schedule</button></Link>
                      </div>
                  </div>
              </div>
@@ -48,7 +50,7 @@ var AdminHomePage = React.createClass({
                         <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                         <p className="smallPanelTextPadding">Here you can manage the routes available to passengers</p>
                         <br/>
-                        <button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Routes</button>
+                        <Link to="ManageRoutes"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Routes</button></Link>
                     </div>
                 </div>
             </div>
@@ -58,7 +60,7 @@ var AdminHomePage = React.createClass({
                        <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                        <p className="smallPanelTextPadding">Here you can manage employee/admin accounts</p>
                        <br/>
-                       <button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Admin/Employee Accounts</button>
+                       <Link to="ManageAccounts"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Admin/Employee Accounts</button></Link>
                    </div>
                </div>
            </div>
