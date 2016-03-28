@@ -15,7 +15,7 @@ var TrainsTable = React.createClass({
                       <br/>
                       <table className="table table-bordered table-striped">
                          <tr>
-                            <td>Train ID</td>
+                            <td>ID</td>
                             <td>Train Name</td>
                             <td>Max Seats</td>
                             <td>Number First Class Seats</td>
