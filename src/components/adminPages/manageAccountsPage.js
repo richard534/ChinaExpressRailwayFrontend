@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require('react');
+var CreateNewAccountPanel = require('./adminPanels/createNewAccountPanel');
 
 var ManageAccountsPage = React.createClass({
 
@@ -8,10 +9,10 @@ var ManageAccountsPage = React.createClass({
        return (
             <div className="container">
                 <div className="col-md-12">
-                    <h1>Manage Accounts</h1>
+                    <h1>Account Management</h1>
                     <br/>
                 </div>
-
+                <CreateNewAccountPanel />
             </div>
        );
      }

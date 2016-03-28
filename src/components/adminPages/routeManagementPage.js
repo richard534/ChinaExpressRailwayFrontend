@@ -1,6 +1,9 @@
 "use strict";
 
 var React = require('react');
+var AddNewRoutePanel = require('./adminPanels/addNewRoutePanel');
+var DeleteRoutePanel = require('./adminPanels/deleteRoutePanel');
+var RoutesTable = require('./adminTables/routesTable');
 
 var RouteManagementPage = React.createClass({
 
@@ -11,6 +14,9 @@ var RouteManagementPage = React.createClass({
                     <h1>Route Management</h1>
                     <br/>
                 </div>
+                <AddNewRoutePanel />
+                <DeleteRoutePanel />
+                <RoutesTable />
             </div>
        );
      }

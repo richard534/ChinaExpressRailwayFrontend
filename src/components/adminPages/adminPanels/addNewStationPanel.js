@@ -20,9 +20,9 @@ var AddNewStationPanel = React.createClass({
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="ticketID" className="col-md-3 control-label">TicketId:</label>
+                                <label htmlFor="ticketID" className="col-md-3 control-label">Station Address:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="ticketID" placeholder="Enter TicketId..." />
+                                    <input className="form-control" id="ticketID" placeholder="Enter Station Address..." />
                                 </div>
                             </div>
                             <div className="form-group">
