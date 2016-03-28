@@ -18,18 +18,45 @@ var selectTicketsPanel = React.createClass({
                   <div className="panel-body">
                       <h1>Placeholder - Placeholder</h1>
                       <br />
-                           <table className="table table-bordered table-striped">
-                               <tr>
-                                  <td rowSpan="2"></td>
-                                  <td className="text-center" colSpan="3">Placeholder - Placeholder</td>
-                              </tr>
-                              <tr>
-                                  <td className="text-center">28th Feb 16:00 - 17:00</td>
-                                  <td className="text-center">28th Feb 16:00 - 17:00</td>
-                                  <td className="text-center">28th Feb 16:00 - 17:00</td>
-                              </tr>
-                              <tr>
-                                  <td className="text-center vert-align">Standard</td>
+                        <table className="table table-bordered table-striped">
+                           <tr>
+                              <td rowSpan="2"></td>
+                              <td className="text-center" colSpan="3">Placeholder - Placeholder</td>
+                          </tr>
+                          <tr>
+                              <td className="text-center">28th Feb 16:00 - 17:00</td>
+                              <td className="text-center">28th Feb 16:00 - 17:00</td>
+                              <td className="text-center">28th Feb 16:00 - 17:00</td>
+                          </tr>
+                          <tr>
+                              <td className="text-center vert-align">Standard</td>
+                              <td className="text-center">
+                                  <div className="radio">
+                                     <label>
+                                       <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
+                                     </label>
+                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                   </div>
+                              </td>
+                              <td className="text-center">
+                                  <div className="radio">
+                                     <label>
+                                       <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
+                                     </label>
+                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                   </div>
+                              </td>
+                              <td className="text-center">
+                                  <div className="radio">
+                                     <label>
+                                       <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
+                                     </label>
+                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                   </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td className="text-center vert-align">First Class</td>
                                   <td className="text-center">
                                       <div className="radio">
                                          <label>
@@ -54,35 +81,8 @@ var selectTicketsPanel = React.createClass({
                                          <p className="text-center ticketBookMoney">£40:50</p>
                                        </div>
                                   </td>
-                              </tr>
-                              <tr>
-                                  <td className="text-center vert-align">First Class</td>
-                                      <td className="text-center">
-                                          <div className="radio">
-                                             <label>
-                                               <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
-                                             </label>
-                                             <p className="text-center ticketBookMoney">£40:50</p>
-                                           </div>
-                                      </td>
-                                      <td className="text-center">
-                                          <div className="radio">
-                                             <label>
-                                               <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
-                                             </label>
-                                             <p className="text-center ticketBookMoney">£40:50</p>
-                                           </div>
-                                      </td>
-                                      <td className="text-center">
-                                          <div className="radio">
-                                             <label>
-                                               <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
-                                             </label>
-                                             <p className="text-center ticketBookMoney">£40:50</p>
-                                           </div>
-                                      </td>
-                              </tr>
-                           </table>
+                          </tr>
+                        </table>
                    </div>
                </div>
                <Link to={this.props.backButtonLink}><button className="btn btn-primary">Back</button></Link>
