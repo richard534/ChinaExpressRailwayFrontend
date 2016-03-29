@@ -14,7 +14,7 @@ var ViewMyTicketsPanel = React.createClass({
                       <img className="img-responsive pull-left" width="100" alt="ViewMyTickets" src="/images/ticket-icon.svg"/>
                       <p className="smallPanelTextPadding">View tickets purchased for past and future travel. You can also print tickets</p>
                       <br/>
-                      <Link to="MyAccount"><button type="submit" className="btn btn-primary btn-block" id="reportButton">View My Tickets</button></Link>
+                      <Link to="ViewTickets"><button type="submit" className="btn btn-primary btn-block" id="reportButton">View My Tickets</button></Link>
                   </div>
                </div>
            </div>

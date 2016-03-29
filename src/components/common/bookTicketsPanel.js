@@ -75,7 +75,7 @@ var bookTicketsPanel = React.createClass({
                                     </select>
                                 </div>
                           </div>
-                              <Link to={this.props.buttonLink}><button type="submit" className="btn btn-primary btn-block">Book Tickets</button></Link>
+                          <Link to={this.props.buttonLink}><button type="submit" className="btn btn-primary btn-block">Book Tickets</button></Link>
                       </form>
                     </div>
                   </div>

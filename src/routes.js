@@ -30,7 +30,9 @@ var routes = (
       <Route name="SigninPage" path="signin/" handler={require('./components/accountManagement/signinPage')} />
       <Route name="Registration" path="registration/" handler={require('./components/accountManagement/RegistrationPage')} />
       <Route name="MyAccount" path="myAccount/" handler={require('./components/accountManagement/myAccountPage')} />
-
+      <Route name="EditAccountDetails" path="myAccount/editAccount" handler={require('./components/accountManagement/EditAccountDetailsPage')} />
+      <Route name="ManageWallet" path="myAccount/ManageWallet" handler={require('./components/accountManagement/ManageWalletPage')} />
+      <Route name="ViewTickets" path="myAccount/ViewTickets" handler={require('./components/accountManagement/ViewTicketsPage')} />
 
       <NotFoundRoute handler={require('./components/NotFoundPage')} />
     </Route>

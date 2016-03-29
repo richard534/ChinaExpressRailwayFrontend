@@ -1,9 +1,9 @@
 "use strict";
 
 var React = require('react');
-var ViewMyTicketsPanel = require('./accountManagementPanels/viewMyTicketsPanel');
-var ManageWalletPanel = require('./accountManagementPanels/manageWalletPanel');
-var EditAccountDetailsPanel = require('./accountManagementPanels/editAccountDetailsPanel');
+var ViewMyTicketsPanel = require('./accountManagementHomePanels/viewMyTicketsPanel');
+var ManageWalletPanel = require('./accountManagementHomePanels/manageWalletPanel');
+var EditAccountDetailsPanel = require('./accountManagementHomePanels/editAccountDetailsPanel');
 
 var MyAccountPage = React.createClass({
 

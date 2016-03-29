@@ -44,7 +44,7 @@ var employeeHomePage = React.createClass({
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                                  <p className="smallPanelTextPadding">Here you can generate a booked trains report</p>
                                  <br/>
-                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Book Tickets</button>
+                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Generate Booked Trains Report</button>
                              </div>
                          </div>
                       </div>
@@ -54,7 +54,7 @@ var employeeHomePage = React.createClass({
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                                  <p className="smallPanelTextPadding">Here you can generate a canceled trains report</p>
                                  <br/>
-                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Book Tickets</button>
+                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Generate Canceled Trains Report</button>
                              </div>
                          </div>
                       </div>
