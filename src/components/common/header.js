@@ -4,6 +4,7 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
+// TODO add signout button when user is logged in
 var Header = React.createClass({
 
     render: function() {
@@ -18,10 +19,10 @@ var Header = React.createClass({
                         <div className="col-md-8">
                             <ul className="nav navbar-nav navbar-right">
                               <li className="nav">
-                                  <p className="navbar-text"><a href="#" className="navbar-link">Register</a></p>
+                                  <p className="navbar-text"><Link to="Registration" className="navbar-link">Register</Link></p>
                               </li>
                               <li className="nav">
-                                  <p className="navbar-text"><a href="#" className="navbar-link">Sign in</a></p>
+                                  <p className="navbar-text"><Link to="SigninPage" className="navbar-link">Sign in</Link></p>
                               </li>
                             </ul>
                         </div>

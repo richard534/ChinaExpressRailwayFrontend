@@ -36,7 +36,7 @@ var AdminHomePage = React.createClass({
               <div className="col-md-4">
                   <div className="panel panel-default">
                      <div className="panel-body">
-                         <img className="img-responsive pull-left" width="100" alt="Schedule" src="/images/schedule-icon.png"/>
+                         <img className="img-responsive pull-left reportThumbnailPadding" width="100" alt="Schedule" src="/images/schedule-icon.png"/>
                          <p className="smallPanelTextPadding">Here you can manage the train schedule</p>
                          <br/>
                          <Link to="ManageSchedule"><button type="submit" className="btn btn-primary btn-block" id="reportButton">Manage Schedule</button></Link>

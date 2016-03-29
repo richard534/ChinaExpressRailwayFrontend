@@ -14,7 +14,7 @@ var routes = (
 
       <Route name="BookTickets" path="selectTickets/" handler={require('./components/passengerPages/bookTicketsPage')} />
       <Route name="SelectDeliveryMethod" path="selectTickets/SelectDeliveryMethod/" handler={require('./components/passengerPages/deliveryOptionPage')} />
-      <Route name="PaymentPage" path="selectTickets/SelectDeliveryMethod/paymentPage/" handler={require('./components/passengerPages/paymentPage')} />
+      <Route name="Payment" path="selectTickets/SelectDeliveryMethod/paymentPage/" handler={require('./components/passengerPages/paymentPage')} />
 
       <Route name="EmployeeHome" path="employeeHomePage/" handler={require('./components/employeePages/employeeHomePage')} />
       <Route name="EmployeeBookTickets" path="employeeHomePage/employeeSelectTickets/" handler={require('./components/employeePages/EmployeeBookTicketsPage')} />
@@ -26,6 +26,11 @@ var routes = (
       <Route name="ManageSchedule" path="adminHomePage/manageSchedule" handler={require('./components/adminPages/scheduleManagementPage')} />
       <Route name="ManageRoutes" path="adminHomePage/manageRoutes" handler={require('./components/adminPages/routeManagementPage')} />
       <Route name="ManageAccounts" path="adminHomePage/manageAccounts" handler={require('./components/adminPages/manageAccountsPage')} />
+
+      <Route name="SigninPage" path="signin/" handler={require('./components/accountManagement/signinPage')} />
+      <Route name="Registration" path="registration/" handler={require('./components/accountManagement/RegistrationPage')} />
+      <Route name="MyAccount" path="myAccount/" handler={require('./components/accountManagement/myAccountPage')} />
+
 
       <NotFoundRoute handler={require('./components/NotFoundPage')} />
     </Route>
