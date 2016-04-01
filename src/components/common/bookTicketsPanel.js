@@ -14,8 +14,9 @@ var bookTicketsPanel = React.createClass({
         };
     },
 
-    dateClickHandler: function() {
-        console.log("click");
+    dateClickHandler: function(event) {
+        event.preventDefault();
+        $("#date").datepicker();
     },
 
    render: function() {
@@ -34,7 +35,7 @@ var bookTicketsPanel = React.createClass({
                           </div>
                           <div className="form-group">
                               <label htmlFor="date">Departing</label>
-                              <input className="form-control" id="date" placeholder="Select Departure Date..." />
+                              <input className="form-control" id="date" onClick={this.dateClickHandler} type="text" readonly="true" placeholder="Select Departure Date..." />
                           </div>
                           <div className="form-group">
                               <div className="col-md-6 pull-left timeCombobox">

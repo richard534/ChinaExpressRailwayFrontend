@@ -44,7 +44,7 @@ var AddNewRoutePanel = React.createClass({
                                     </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="journ" className="col-md-3 control-label">Departure Date:</label>
+                                <label htmlFor="journ" className="col-md-3 control-label">Duration (Mins):</label>
                                 <div className="col-md-9">
                                     <input className="form-control" id="journ" placeholder="Enter Journey Duration..." />
                                 </div>
