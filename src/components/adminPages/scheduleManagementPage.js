@@ -2,7 +2,7 @@
 
 var React = require('react');
 var AddNewSchedulePanel = require('./adminPanels/addNewSchedulePanel');
-var DeleteSchedulePanel = require('./adminPanels/DeleteSchedulePanel');
+var DeleteSchedulePanel = require('./adminPanels/deleteSchedulePanel');
 var ScheduleTable = require('./adminTables/scheduleTable');
 
 var ScheduleManagementPage = React.createClass({

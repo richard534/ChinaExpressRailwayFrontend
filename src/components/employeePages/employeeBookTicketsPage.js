@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var SelectTicketsPanel = require('../common/SelectTicketsPanel');
+var SelectTicketsPanel = require('../common/selectTicketsPanel');
 var TicketSummaryPanel = require('../common/ticketSummaryPanel');
 
 // TODO populate h1 placeholders

@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var StationTable = require('./adminTables/StationTable');
+var StationTable = require('./adminTables/stationTable');
 var AddNewStationPanel = require('./adminPanels/addNewStationPanel');
 var DeleteStationPanel = require('./adminPanels/deleteStationPanel');
 
