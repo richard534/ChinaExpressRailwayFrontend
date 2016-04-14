@@ -29,7 +29,7 @@ var AddNewSchedulePanel = React.createClass({
                             <div className="form-group">
                                 <label htmlFor="departureDate" className="col-md-3 control-label">Departure Date:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="departureDate" onClick={this.dateClickHandler} type="text" readonly="true" placeholder="Enter Departure Date..." />
+                                    <input className="form-control" id="departureDate" onClick={this.dateClickHandler} type="text" placeholder="Enter Departure Date..." />
                                 </div>
                             </div>
                             <div className="form-group">

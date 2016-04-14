@@ -16,6 +16,10 @@ var employeeHomePage = React.createClass({
    render: function() {
        return (
            <div className="container">
+               <div className="col-md-12">
+                   <h1>Employee Home</h1>
+                   <br/>
+               </div>
                <BookTicketsPanel buttonLink="EmployeeBookTickets"
                    sourceStation={this.props.sourceStation}
                    destinationStation={this.props.destinationStation}

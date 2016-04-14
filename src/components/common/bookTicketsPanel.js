@@ -35,7 +35,7 @@ var bookTicketsPanel = React.createClass({
                           </div>
                           <div className="form-group">
                               <label htmlFor="date">Departing</label>
-                              <input className="form-control" id="date" onClick={this.dateClickHandler} type="text" readonly="true" placeholder="Select Departure Date..." />
+                              <input className="form-control" id="date" onClick={this.dateClickHandler} type="text" placeholder="Select Departure Date..." />
                           </div>
                           <div className="form-group">
                               <div className="col-md-6 pull-left timeCombobox">

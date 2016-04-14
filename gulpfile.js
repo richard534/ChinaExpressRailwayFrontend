@@ -18,6 +18,7 @@ var config = {
 		img: './src/images/*',
 		css: [
 			'src/css/bootstrapSimplex.min.css',
+			'node_modules/toastr/toastr.css',
 			'src/css/custom.css'
 		],
 		dist: './dist',
