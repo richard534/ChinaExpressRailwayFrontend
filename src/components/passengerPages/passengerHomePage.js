@@ -3,33 +3,57 @@
 var React = require('react');
 var BookTicketsPanel = require('../common/bookTicketsPanel');
 var PopularRoutesPanel = require('./passengerPanels/popularRoutesPanel');
+var validate = require('validate.js');
+
+var constraints = {
+    sourceStation: {
+        presence: true
+    },
+    destinationStation: {
+        presence: true
+    },
+    departureDate: {
+        presence: true
+    }
+};
 
 var passengerHomePage = React.createClass({
 
     getInitialState: function() {
         return {
-            sourceStation: "",
-            destinationStation: "",
-            departureDate: "",
-            departureTimeHour: "",
-            departureTimeMin: ""
+            data: {
+                sourceStation: "",
+                destinationStation: "",
+                departureDate: "",
+                departureTimeHour: "",
+                departureTimeMin: ""
+            },
+            errors: {
+                sourceStation: "Please enter your journey requirements"
+            }
         };
     },
 
     onUpdate: function(val){
         this.setState({
-            sourceStation: val.sourceStation,
-            destinationStation: val.destinationStation,
-            departureDate: val.departureDate,
-            departureTimeHour: val.departureTimeHour,
-            departureTimeMin: val.departureTimeMin
-        });
+            data: {
+                sourceStation: val.sourceStation,
+                destinationStation: val.destinationStation,
+                departureDate: val.departureDate,
+                departureTimeHour: val.departureTimeHour,
+                departureTimeMin: val.departureTimeMin
+            }
+        }, this.validate);
     },
 
-    handleSubmit: function(e) {
-        var self = this;
-        e.preventDefault();
+    validate: function () {
+        var validationErrors = validate(this.state.data, constraints);
 
+            if(validationErrors){
+                this.setState({errors: validationErrors});
+            } else {
+                this.setState({errors: {}});
+            }
     },
 
    render: function() {
@@ -37,12 +61,13 @@ var passengerHomePage = React.createClass({
            <div className="container">
                <BookTicketsPanel
                    buttonLink="BookTickets"
-                   sourceStation={this.state.sourceStation}
-                   destinationStation={this.state.destinationStation}
-                   departureDate={this.state.departureDate}
-                   departureTimeHour={this.state.departureTimeHour}
-                   departureTimeMin={this.state.departureTimeMin}
-                   onUpdate={this.onUpdate} />
+                   sourceStation={this.state.data.sourceStation}
+                   destinationStation={this.state.data.destinationStation}
+                   departureDate={this.state.data.departureDate}
+                   departureTimeHour={this.state.data.departureTimeHour}
+                   departureTimeMin={this.state.data.departureTimeMin}
+                   onUpdate={this.onUpdate}
+                   errors={this.state.errors} />
                <PopularRoutesPanel />
            </div>
        );

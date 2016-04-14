@@ -3,6 +3,7 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var _ = require('lodash');
 
 var bookTicketsPanel = React.createClass({
     getDefaultProps: function() {
@@ -11,7 +12,10 @@ var bookTicketsPanel = React.createClass({
             destinationStation: "",
             departureDate: "",
             departureTimeHour: "",
-            departureTimeMin: ""
+            departureTimeMin: "",
+            errors: {
+                sourceStation: ""
+            }
         };
     },
 
@@ -39,11 +43,51 @@ var bookTicketsPanel = React.createClass({
     },
 
    render: function() {
+    var self = this;
+    var errorsList;
+    var bookTicketsButton;
+
+    var populateErrorsList = function() {
+        return (
+            <div className="div-md-12 alert alert-danger">
+                <div>{self.props.errors.sourceStation}</div>
+                <div>{self.props.errors.destinationStation}</div>
+                <div>{self.props.errors.departureDate}</div>
+            </div>
+        );
+    };
+
+    var disabledBookTicketsButton = function() {
+        return (
+            <button className="btn btn-primary btn-block disabled">Book Tickets</button>
+        );
+    };
+
+    var enabledBookTicketsButton = function() {
+        return (
+            <Link to={self.props.buttonLink} query={{ src: self.props.sourceStation,
+                    dest: self.props.destinationStation,
+                    dDate: self.props.departureDate,
+                    dTHour: self.props.departureTimeHour,
+                    dTMin: self.props.departureTimeMin }}>
+                    <button className="btn btn-primary btn-block">Book Tickets</button></Link>
+        );
+    };
+
+
+    if(!_.isEmpty(self.props.errors)) {
+       errorsList = populateErrorsList();
+       bookTicketsButton = disabledBookTicketsButton();
+    } else {
+       bookTicketsButton = enabledBookTicketsButton();
+    }
+
        return (
              <div className="col-md-4">
                  <div className="panel panel-default">
                     <div className="panel-body">
                       <form onChange={this.handleChange} onSubmit={this.props.handleSubmit}>
+                          {errorsList}
                           <div className="form-group">
                               <label>From</label>
                               <input className="form-control" value={this.props.sourceStation} ref="from" placeholder="Enter station name..." />
@@ -54,7 +98,7 @@ var bookTicketsPanel = React.createClass({
                           </div>
                           <div className="form-group">
                               <label>Departing</label>
-                              <input className="form-control" value={this.props.departureDate} ref="date" id="date" onClick={this.dateClickHandler} placeholder="Select Departure Date..."/>
+                              <input className="form-control" value={this.props.departureDate} ref="date" id="date" onClick={this.dateClickHandler} onkeydown="return false;" placeholder="Select Departure Date..."/>
                           </div>
                           <div className="form-group">
                               <div className="col-md-6 pull-left timeCombobox">
@@ -95,12 +139,7 @@ var bookTicketsPanel = React.createClass({
                                     </select>
                                 </div>
                           </div>
-                          <Link to={this.props.buttonLink} query={{ src: this.props.sourceStation,
-                                  dest: this.props.destinationStation,
-                                  dDate: this.props.departureDate,
-                                  dTHour: this.props.departureTimeHour,
-                                  dTMin: this.props.departureTimeMin }}>
-                                  <button type="submit" className="btn btn-primary btn-block">Book Tickets</button></Link>
+                          {bookTicketsButton}
                       </form>
                     </div>
                   </div>
