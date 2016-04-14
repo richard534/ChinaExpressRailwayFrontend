@@ -2,8 +2,9 @@
 
 var React = require('react');
 var BookTicketsPanel = require('../common/bookTicketsPanel');
+var auth = require('../auth/auth.js');
 
-var employeeHomePage = React.createClass({
+var employeeHomePage = auth.requireAuth(React.createClass({
 
     getInitialState: function() {
         return {
@@ -67,6 +68,6 @@ var employeeHomePage = React.createClass({
 
        );
    }
-});
+}), "employee");
 
 module.exports = employeeHomePage;

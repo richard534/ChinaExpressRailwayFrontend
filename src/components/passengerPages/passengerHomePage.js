@@ -8,19 +8,41 @@ var passengerHomePage = React.createClass({
 
     getInitialState: function() {
         return {
-                sourceStation: "",
-                destinationStation: "",
-                departureDate: {}
+            sourceStation: "",
+            destinationStation: "",
+            departureDate: "",
+            departureTimeHour: "",
+            departureTimeMin: ""
         };
+    },
+
+    onUpdate: function(val){
+        this.setState({
+            sourceStation: val.sourceStation,
+            destinationStation: val.destinationStation,
+            departureDate: val.departureDate,
+            departureTimeHour: val.departureTimeHour,
+            departureTimeMin: val.departureTimeMin
+        });
+    },
+
+    handleSubmit: function(e) {
+        var self = this;
+        e.preventDefault();
+
     },
 
    render: function() {
        return (
            <div className="container">
-               <BookTicketsPanel buttonLink="BookTickets"
-                   sourceStation={this.props.sourceStation}
-                   destinationStation={this.props.destinationStation}
-                   departureDate={this.props.departureDate} />
+               <BookTicketsPanel
+                   buttonLink="BookTickets"
+                   sourceStation={this.state.sourceStation}
+                   destinationStation={this.state.destinationStation}
+                   departureDate={this.state.departureDate}
+                   departureTimeHour={this.state.departureTimeHour}
+                   departureTimeMin={this.state.departureTimeMin}
+                   onUpdate={this.onUpdate} />
                <PopularRoutesPanel />
            </div>
        );

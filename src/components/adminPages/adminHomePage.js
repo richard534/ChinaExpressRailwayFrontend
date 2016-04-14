@@ -3,8 +3,9 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var auth = require('../auth/auth.js');
 
-var AdminHomePage = React.createClass({
+var AdminHomePage = auth.requireAuth(React.createClass({
 
    render: function() {
        return (
@@ -67,6 +68,6 @@ var AdminHomePage = React.createClass({
         </div>
        );
      }
-});
+}), "admin");
 
 module.exports = AdminHomePage;

@@ -143,21 +143,21 @@ module.exports = {
 
                 if(accountType === "admin") {
                     getAdminAccount(usernameToRequest, token, function(getAdminAccountResult) {
-                        localStorage.adminId = getAdminAccountResult.adminId;
+                        localStorage.adminId = getAdminAccountResult.adminID;
                         localStorage.username = getAdminAccountResult.username;
                         if (cb) {cb(true, "admin"); }
                         _this.onChange(true);
                     });
                 } else if(accountType === "employee") {
                     getEmployeeAccount(usernameToRequest, token, function(getEmployeeAccountResult) {
-                        localStorage.employeeId = getEmployeeAccountResult.employeeId;
+                        localStorage.employeeId = getEmployeeAccountResult.employeeID;
                         localStorage.username = getEmployeeAccountResult.username;
                         if (cb) {cb(true, "employee"); }
                         _this.onChange(true);
                     });
                 } else {
                     getPassengerAccount(usernameToRequest, token, function(getPassengerAccountResult) {
-                        localStorage.passengerId = getPassengerAccountResult.passengerId;
+                        localStorage.passengerId = getPassengerAccountResult.passengerID;
                         localStorage.username = getPassengerAccountResult.username;
                         if (cb) {cb(true, "passenger"); }
                         _this.onChange(true);
@@ -202,18 +202,61 @@ module.exports = {
         return !!localStorage.token;
     },
 
+    // Check if logged in as passsenger
+    loggedInAsPassenger: function loggedIn() {
+        return !!localStorage.passengerId;
+    },
+
+    // Check if logged in as Admin
+    loggedInAsAdmin: function loggedIn() {
+        return !!localStorage.adminId;
+    },
+
+    // Check if logged in as Employee
+    loggedInAsEmployee: function loggedIn() {
+        return !!localStorage.employeeId;
+    },
+
     onChange: function onChange() {},
 
-    requireAuth: function(Component) { // TODO maybe add parameter that specifies account type required
+    requireAuth: function(Component, roleRequired) { // TODO maybe add parameter that specifies account type required
         var self = this;
         return React.createClass({
             statics: {
                 willTransitionTo: function(transition, params, query, callback) {
+                    // Check is client is logged in at all
                     if(self.loggedIn()) {
-                        callback();
+                        if(roleRequired === "admin") {
+                            // Check admin account is logged in
+                            if(self.loggedInAsAdmin()) {
+                                callback();
+                            } else {
+                                toastr.error('You must be logged in as an admin to access this page');
+                                transition.redirect('SigninPage');
+                                callback();
+                            }
+                        } else if(roleRequired === "employee") {
+                            // Check employee account is logged in
+                            if(self.loggedInAsEmployee()) {
+                                callback();
+                            } else {
+                                toastr.error('You must be logged in as an employee to access this page');
+                                transition.redirect('SigninPage');
+                                callback();
+                            }
+                        } else if(roleRequired === "passenger") {
+                            // Check passenger account is logged in
+                            if(self.loggedInAsPassenger()) {
+                                callback();
+                            } else {
+                                toastr.error('You must be logged in as a passenger to access this page');
+                                transition.redirect('SigninPage');
+                                callback();
+                            }
+                        }
                     } else {
                         toastr.error('You must be logged in to access this page');
-                        transition.redirect('signIn');
+                        transition.redirect('SigninPage');
                         callback();
                     }
                 }
