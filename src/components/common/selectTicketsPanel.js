@@ -13,11 +13,26 @@ var selectTicketsPanel = React.createClass({
             destinationStation: "",
             leftSchedule: {},
             middleSchedule: {},
-            rightSchedule: {}
+            rightSchedule: {},
+            schedulesFound: true
         };
     },
 
    render: function() {
+       if(!this.props.schedulesFound){
+           return (
+               <div className="col-md-4">
+                  <div className="panel panel-default">
+                     <div className="panel-body">
+                         <h4>No Tickets Found</h4>
+                         <br/>
+                         <Link to={this.props.backButtonLink}><button className="btn btn-primary">Back</button></Link>
+                         <br/><br/>
+                     </div>
+                 </div>
+             </div>
+           );
+       } else {
 
        return (
            <div className="col-md-8">
@@ -97,6 +112,7 @@ var selectTicketsPanel = React.createClass({
            </div>
        );
      }
+ }
 });
 
 module.exports = selectTicketsPanel;

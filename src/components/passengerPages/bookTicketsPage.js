@@ -135,6 +135,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           success: function(results) {
               if(_.isEmpty(results)){
                   toastr.error('No tickets found');
+                  self.setState({schedulesFound: false});
                   return;
               }
               results.map(function(schedule){
@@ -173,6 +174,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
     },
 
    render: function() {
+
        return (
             <div className="container">
                 <SelectTicketsPanel backButtonLink="app"
@@ -181,14 +183,16 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                     leftSchedule={this.state.leftSchedule}
                     middleSchedule={this.state.middleSchedule}
                     rightSchedule={this.state.rightSchedule}
-                    handleScheduleSelection={this.handleScheduleSelection}/>
+                    handleScheduleSelection={this.handleScheduleSelection}
+                    schedulesFound={this.state.schedulesFound}/>
                 <TicketSummaryPanel buttonLink="SelectDeliveryMethod"
                     sourceStation={this.state.sourceStation}
                     destinationStation={this.state.destinationStation}
-                    totalTicketCost={this.state.totalTicketCost} />
+                    totalTicketCost={this.state.totalTicketCost}
+                    schedulesFound={this.state.schedulesFound} />
            </div>
        );
-     }
+    }
 }), "passenger");
 
 module.exports = BookTicketsPage;
