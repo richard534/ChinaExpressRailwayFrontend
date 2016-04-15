@@ -18,11 +18,9 @@ function requestAuthentication(username, pass, cb) {
             url: 'http://52.31.154.40:8087/checkDetails',
             success: function(tokenResults) {
                 // Determine if user is passenger, employee or admin and set associated flag
+                var token = tokenResults; // Account token
                 if(username.startsWith('a/') || username.startsWith('A/')){
                     // user is admin
-                    console.log("Admin");
-                    var token = tokenResults; // Account token
-                    console.log(token);
                     cb({
                         authenticated: true,
                         token: token,
@@ -34,7 +32,7 @@ function requestAuthentication(username, pass, cb) {
                     console.log("Employee");
                     cb({
                         authenticated: true,
-                        token: tokenResults,
+                        token: token,
                         type: "employee",
                         username: username
                     });
@@ -43,7 +41,7 @@ function requestAuthentication(username, pass, cb) {
                     console.log("Passenger");
                     cb({
                         authenticated: true,
-                        token: tokenResults,
+                        token: token,
                         type: "passenger",
                         username: username
                     });
@@ -67,7 +65,7 @@ function getAdminAccount(username, token, cb) {
         success: function(result) {
             console.log(result);
             cb({
-                adminId: result.adminId,
+                Id: result.adminId,
                 username: result.person.userName
             });
         },
@@ -88,7 +86,7 @@ function getEmployeeAccount(username, token, cb) {
         success: function(result) {
             console.log(result);
             cb({
-                employeeId: result.employeeId,
+                Id: result.employeeId,
                 username: result.person.userName
             });
         },
@@ -109,7 +107,7 @@ function getPassengerAccount(username, token, cb) {
         success: function(result) {
             console.log(result);
             cb({
-                passengerId: result.passengerId,
+                Id: result.passengerID,
                 username: result.person.userName
             });
         },
@@ -141,29 +139,30 @@ module.exports = {
                 var usernameToRequest = res.username;
                 var token = res.token;
 
+                console.log(res);
+
                 if(accountType === "admin") {
                     getAdminAccount(usernameToRequest, token, function(getAdminAccountResult) {
-                        localStorage.adminId = getAdminAccountResult.adminID;
+                        localStorage.adminId = getAdminAccountResult.Id;
                         localStorage.username = getAdminAccountResult.username;
                         if (cb) {cb(true, "admin"); }
                         _this.onChange(true);
                     });
                 } else if(accountType === "employee") {
                     getEmployeeAccount(usernameToRequest, token, function(getEmployeeAccountResult) {
-                        localStorage.employeeId = getEmployeeAccountResult.employeeID;
+                        localStorage.employeeId = getEmployeeAccountResult.Id;
                         localStorage.username = getEmployeeAccountResult.username;
                         if (cb) {cb(true, "employee"); }
                         _this.onChange(true);
                     });
                 } else {
                     getPassengerAccount(usernameToRequest, token, function(getPassengerAccountResult) {
-                        localStorage.passengerId = getPassengerAccountResult.passengerID;
+                        localStorage.passengerId = getPassengerAccountResult.Id;
                         localStorage.username = getPassengerAccountResult.username;
                         if (cb) {cb(true, "passenger"); }
                         _this.onChange(true);
                     });
                 }
-
             } else {
                 if (cb) {cb(false); } // If auth UnSuccessful callback set to false
                 _this.onChange(false);

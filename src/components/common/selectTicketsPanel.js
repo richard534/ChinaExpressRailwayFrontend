@@ -40,9 +40,9 @@ var selectTicketsPanel = React.createClass({
                               <td className="text-center">
                                   <div className="radio">
                                      <label>
-                                       <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
+                                       <input type="radio" name="optionsRadios" onClick={this.props.handleScheduleSelection} id="optionsRadios1" value="1" />
                                      </label>
-                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                     <p className="text-center ticketBookMoney">£3.30</p>
                                    </div>
                               </td>
                               <td className="text-center">
@@ -50,7 +50,7 @@ var selectTicketsPanel = React.createClass({
                                      <label>
                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
                                      </label>
-                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                     <p className="text-center ticketBookMoney">£3.30</p>
                                    </div>
                               </td>
                               <td className="text-center">
@@ -58,7 +58,7 @@ var selectTicketsPanel = React.createClass({
                                      <label>
                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
                                      </label>
-                                     <p className="text-center ticketBookMoney">£40:50</p>
+                                     <p className="text-center ticketBookMoney">£3.30</p>
                                    </div>
                               </td>
                           </tr>
@@ -69,7 +69,7 @@ var selectTicketsPanel = React.createClass({
                                          <label>
                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
                                          </label>
-                                         <p className="text-center ticketBookMoney">£40:50</p>
+                                         <p className="text-center ticketBookMoney">£4.40</p>
                                        </div>
                                   </td>
                                   <td className="text-center">
@@ -77,7 +77,7 @@ var selectTicketsPanel = React.createClass({
                                          <label>
                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
                                          </label>
-                                         <p className="text-center ticketBookMoney">£40:50</p>
+                                         <p className="text-center ticketBookMoney">£4.40</p>
                                        </div>
                                   </td>
                                   <td className="text-center">
@@ -85,7 +85,7 @@ var selectTicketsPanel = React.createClass({
                                          <label>
                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" />
                                          </label>
-                                         <p className="text-center ticketBookMoney">£40:50</p>
+                                         <p className="text-center ticketBookMoney">£4.40</p>
                                        </div>
                                   </td>
                           </tr>

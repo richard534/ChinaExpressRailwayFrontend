@@ -38,7 +38,8 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                 date: ""
             },
 
-            selectedTicket: 1
+            selectedTicket: 1,
+            totalTicketCost: 0
         };
     },
 
@@ -160,6 +161,11 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    handleScheduleSelection: function(e) {
+        e.preventDefault();
+        console.log(e.currentTarget.value);
+    },
+
    render: function() {
        return (
             <div className="container">
@@ -168,10 +174,12 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                     destinationStation={this.state.destinationStation.destinationStationName}
                     leftSchedule={this.state.leftSchedule}
                     middleSchedule={this.state.middleSchedule}
-                    rightSchedule={this.state.rightSchedule} />
+                    rightSchedule={this.state.rightSchedule}
+                    handleScheduleSelection={this.handleScheduleSelection}/>
                 <TicketSummaryPanel buttonLink="SelectDeliveryMethod"
                     sourceStation={this.state.sourceStation}
-                    destinationStation={this.state.destinationStation} />
+                    destinationStation={this.state.destinationStation}
+                    totalTicketCost={this.state.totalTicketCost} />
            </div>
        );
      }
