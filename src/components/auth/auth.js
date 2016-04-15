@@ -3,6 +3,7 @@
 var React = require('react');
 var Router = require('react-router');
 var toastr = require('toastr');
+var _ = require('lodash');
 
 // cb stands for callback
 function requestAuthentication(username, pass, cb) {
@@ -17,8 +18,15 @@ function requestAuthentication(username, pass, cb) {
             dataType: 'text',
             url: 'http://52.31.154.40:8087/checkDetails',
             success: function(tokenResults) {
+                if(_.isObject(tokenResults) || tokenResults === "failed"){
+                    cb({
+                        authenticated: false
+                    });
+                    return;
+                }
                 // Determine if user is passenger, employee or admin and set associated flag
                 var token = tokenResults; // Account token
+                console.log(tokenResults);
                 if(username.startsWith('a/') || username.startsWith('A/')){
                     // user is admin
                     cb({
@@ -29,7 +37,6 @@ function requestAuthentication(username, pass, cb) {
                     });
                 } else if (username.startsWith('e/') || username.startsWith('E/')) {
                     // user is employee
-                    console.log("Employee");
                     cb({
                         authenticated: true,
                         token: token,
@@ -38,7 +45,6 @@ function requestAuthentication(username, pass, cb) {
                     });
                 } else {
                     // user is passenger
-                    console.log("Passenger");
                     cb({
                         authenticated: true,
                         token: token,

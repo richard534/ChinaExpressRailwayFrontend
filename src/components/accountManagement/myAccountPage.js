@@ -43,9 +43,9 @@ var MyAccountPage = React.createClass({
        };
 
        if(this.state.isPassenger){
-           panels = renderPassengerScreen;
+           panels = renderPassengerScreen();
        } else {
-           panels = renderOtherScreen;
+           panels = renderOtherScreen();
        }
 
        return (

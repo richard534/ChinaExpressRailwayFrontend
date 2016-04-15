@@ -5,6 +5,7 @@ var SelectTicketsPanel = require('../common/selectTicketsPanel');
 var TicketSummaryPanel = require('../common/ticketSummaryPanel');
 var auth = require('../auth/auth.js');
 var toastr = require('toastr');
+var _ = require('lodash');
 var DateJs = require('datejs');
 
 // TODO populate h1 placeholders
@@ -28,6 +29,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
             },
 
             schedules: [],
+            schedulesFound: true,
             leftSchedule: {
                 date: ""
             },
@@ -131,6 +133,10 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           url: 'http://52.31.154.40:8087/schedule/getSchedules',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
+              if(_.isEmpty(results)){
+                  toastr.error('No tickets found');
+                  return;
+              }
               results.map(function(schedule){
                   self.setState({
                       schedules: self.state.schedules.concat([schedule])
