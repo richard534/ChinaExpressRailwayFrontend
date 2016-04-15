@@ -9,7 +9,9 @@ var bookTicketsPanel = React.createClass({
     getDefaultProps: function() {
         return {
             sourceStation: "",
+            sourceStationId: "",
             destinationStation: "",
+            destinationStationId: "",
             departureDate: "",
             departureTimeHour: "",
             departureTimeMin: "",
@@ -42,6 +44,54 @@ var bookTicketsPanel = React.createClass({
         this.props.onUpdate(values);
     },
 
+    handleSumbit: function(e) {
+        e.preventDefault();
+    },
+
+    autoCompleteSourceStation: function() {
+        $("#from").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                type: "get",
+                url: 'http://52.31.154.40:8087/train/station',
+                dataType: 'json',
+                success: function(result) {
+                    response($.map( result, function(item) {
+                        return {
+                            value: item.name
+                        };
+                    }));
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ": " + errorThrown);
+                }
+              });
+            }
+        });
+    },
+
+    autoCompleteDestinationStation: function() {
+        $("#to").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                type: "get",
+                url: 'http://52.31.154.40:8087/train/station',
+                dataType: 'json',
+                success: function(result) {
+                    response($.map( result, function(item) {
+                        return {
+                            value: item.name
+                        };
+                    }));
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ": " + errorThrown);
+                }
+              });
+            }
+        });
+    },
+
    render: function() {
     var self = this;
     var errorsList;
@@ -59,7 +109,7 @@ var bookTicketsPanel = React.createClass({
 
     var disabledBookTicketsButton = function() {
         return (
-            <button className="btn btn-primary btn-block disabled">Book Tickets</button>
+            <button type="submit" className="btn btn-primary btn-block disabled">Book Tickets</button>
         );
     };
 
@@ -86,19 +136,19 @@ var bookTicketsPanel = React.createClass({
              <div className="col-md-4">
                  <div className="panel panel-default">
                     <div className="panel-body">
-                      <form onChange={this.handleChange} onSubmit={this.props.handleSubmit}>
+                      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                           {errorsList}
                           <div className="form-group">
                               <label>From</label>
-                              <input className="form-control" value={this.props.sourceStation} ref="from" placeholder="Enter station name..." />
+                              <input className="form-control" value={this.props.sourceStation} ref="from" id="from" onKeyUp={this.autoCompleteSourceStation} autoComplete="off" placeholder="Enter station name..." />
                           </div>
                           <div className="form-group">
                               <label>To</label>
-                              <input className="form-control" value={this.props.destinationStation} ref="to" placeholder="Enter station name..." />
+                              <input className="form-control" value={this.props.destinationStation} ref="to" id="to" onKeyUp={this.autoCompleteDestinationStation} autoComplete="off" placeholder="Enter station name..." />
                           </div>
                           <div className="form-group">
                               <label>Departing</label>
-                              <input className="form-control" value={this.props.departureDate} ref="date" id="date" onClick={this.dateClickHandler} onkeydown="return false;" placeholder="Select Departure Date..."/>
+                              <input className="form-control" value={this.props.departureDate} ref="date" id="date" onClick={this.dateClickHandler} onkeydown="return false;" autoComplete="off" placeholder="Select Departure Date..."/>
                           </div>
                           <div className="form-group">
                               <div className="col-md-6 pull-left timeCombobox">

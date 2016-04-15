@@ -3,30 +3,37 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var _ = require('lodash');
 
 var selectTicketsPanel = React.createClass({
     getDefaultProps: function() {
         return {
-            backButtonLink: ""
+            backButtonLink: "",
+            sourceStation: "",
+            destinationStation: "",
+            leftSchedule: {},
+            middleSchedule: {},
+            rightSchedule: {}
         };
     },
 
    render: function() {
+
        return (
            <div className="col-md-8">
                <div className="panel panel-default">
                   <div className="panel-body">
-                      <h1>Placeholder - Placeholder</h1>
+                      <h1>{this.props.sourceStation} - {this.props.destinationStation}</h1>
                       <br />
                         <table className="table table-bordered table-striped">
                            <tr>
                               <td rowSpan="2"></td>
-                              <td className="text-center" colSpan="3">Placeholder - Placeholder</td>
+                              <td className="text-center" colSpan="3">{this.props.sourceStation} - {this.props.destinationStation}</td>
                           </tr>
                           <tr>
-                              <td className="text-center">28th Feb 16:00 - 17:00</td>
-                              <td className="text-center">28th Feb 16:00 - 17:00</td>
-                              <td className="text-center">28th Feb 16:00 - 17:00</td>
+                              <td className="text-center">{this.props.leftSchedule.date}</td>
+                              <td className="text-center">{this.props.middleSchedule.date}</td>
+                              <td className="text-center">{this.props.rightSchedule.date}</td>
                           </tr>
                           <tr>
                               <td className="text-center vert-align">Standard</td>

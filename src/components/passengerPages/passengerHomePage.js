@@ -56,7 +56,8 @@ var passengerHomePage = React.createClass({
             }
     },
 
-   render: function() {
+
+    render: function() {
        return (
            <div className="container">
                <BookTicketsPanel

@@ -11,8 +11,11 @@ var ticketSummaryPanel = React.createClass({
         };
     },
 
-
-   render: function() {
+    // TODO set cost of tickets
+    // TODO set params to pass query
+    // TODO add departure date of selected ticket
+    // TODO add type selected ticket
+    render: function() {
        return (
             <div className="col-md-4">
                <div className="panel panel-default">
@@ -20,7 +23,9 @@ var ticketSummaryPanel = React.createClass({
                       <label>Total:</label>
                       <h2 id="total">£40.50</h2>
                       <br />
-                      <Link to={this.props.buttonLink}><button type="submit" className="btn btn-primary btn-block">Continue</button></Link>
+                      <Link to={this.props.buttonLink} params={{scheduleId: 1,
+                              numFCTickets: 1,
+                              numSCTickets: 1}}><button type="submit" className="btn btn-primary btn-block">Continue</button></Link>
                       <hr />
                       <div className='row'>
                           <div className="col-md-4">
@@ -30,7 +35,7 @@ var ticketSummaryPanel = React.createClass({
                               <p className="text-right">16:00 (28th Feb)</p>
                           </div>
                       </div>
-                      <p>Beijing to Shanghai</p>
+                      <p>{this.props.sourceStation} to {this.props.destinationStation}</p>
                       <p>Standard</p>
                   </div>
               </div>
