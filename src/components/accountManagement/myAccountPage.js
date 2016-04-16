@@ -6,7 +6,7 @@ var ManageWalletPanel = require('./accountManagementHomePanels/manageWalletPanel
 var EditAccountDetailsPanel = require('./accountManagementHomePanels/editAccountDetailsPanel');
 var auth = require('../auth/auth.js');
 
-var MyAccountPage = React.createClass({
+var MyAccountPage = auth.requireAuth(React.createClass({
     getInitialState: function() {
         return {
             username: "",
@@ -58,6 +58,6 @@ var MyAccountPage = React.createClass({
             </div>
        );
      }
-});
+}));
 
 module.exports = MyAccountPage;

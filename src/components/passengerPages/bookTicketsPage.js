@@ -187,7 +187,6 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
     },
 
     handleScheduleSelection: function(e) {
-        console.log("clickEvent");
         var selected = e.currentTarget.id;
         this.setState({selectedTicket: selected});
 

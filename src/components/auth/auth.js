@@ -231,6 +231,9 @@ module.exports = {
                 willTransitionTo: function(transition, params, query, callback) {
                     // Check is client is logged in at all
                     if(self.loggedIn()) {
+                        if(!roleRequired){
+                            callback();
+                        }
                         if(roleRequired === "admin") {
                             // Check admin account is logged in
                             if(self.loggedInAsAdmin()) {

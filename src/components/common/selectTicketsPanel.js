@@ -18,10 +18,6 @@ var selectTicketsPanel = React.createClass({
         };
     },
 
-    componentWillReceiveProps: function(nextProps) {
-
-    },
-
    render: function() {
        if(!this.props.schedulesFound){
            return (

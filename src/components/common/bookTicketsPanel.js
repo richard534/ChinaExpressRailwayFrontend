@@ -44,7 +44,7 @@ var bookTicketsPanel = React.createClass({
         this.props.onUpdate(values);
     },
 
-    handleSumbit: function(e) {
+    handleSubmit: function(e) {
         e.preventDefault();
     },
 
