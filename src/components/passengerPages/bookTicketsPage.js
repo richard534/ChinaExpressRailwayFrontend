@@ -31,17 +31,26 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
             schedules: [],
             schedulesFound: true,
             leftSchedule: {
-                date: ""
+                scheduleID: 0,
+                date: "",
+                availableFirstClass: 0,
+                availableStandardClass: 0
             },
             middleSchedule: {
-                date: ""
+                scheduleID: 0,
+                date: "",
+                availableFirstClass: 0,
+                availableStandardClass: 0
             },
             rightSchedule: {
-                date: ""
+                scheduleID: 0,
+                date: "",
+                availableFirstClass: 0,
+                availableStandardClass: 0
             },
-
-            selectedTicket: 1,
-            totalTicketCost: 0
+            selectedTicket: "",
+            selectedticketPrice: 0,
+            totalTicketCost: 3.30
         };
     },
 
@@ -79,6 +88,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving schedules');
+              self.setState({schedulesFound: false});
           }
         });
     },
@@ -106,6 +116,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving schedules');
+              self.setState({schedulesFound: false});
           }
         });
     },
@@ -146,15 +157,21 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
 
               var leftSchedule = {
                   date: (new Date(self.state.schedules[0].departureDate)).toDateString(),
-                  scheduleID: self.state.schedules[0].scheduleID
+                  scheduleID: self.state.schedules[0].scheduleID,
+                  availableFirstClass: self.state.schedules[0].availableFirstClass,
+                  availableStandardClass: self.state.schedules[0].availableStandardClass
               };
               var middleSchedule = {
                   date: (new Date(self.state.schedules[1].departureDate)).toDateString(),
-                  scheduleID: self.state.schedules[1].scheduleID
+                  scheduleID: self.state.schedules[1].scheduleID,
+                 availableFirstClass: self.state.schedules[1].availableFirstClass,
+                  availableStandardClass: self.state.schedules[1].availableStandardClass
               };
               var rightSchedule = {
                   date: (new Date(self.state.schedules[2].departureDate)).toDateString(),
-                  scheduleID: self.state.schedules[2].scheduleID
+                  scheduleID: self.state.schedules[2].scheduleID,
+                  availableFirstClass: self.state.schedules[2].availableFirstClass,
+                  availableStandardClass: self.state.schedules[2].availableStandardClass
               };
 
               self.setState({ leftSchedule: leftSchedule});
@@ -164,13 +181,21 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving schedules');
+              self.setState({schedulesFound: false});
           }
         });
     },
 
     handleScheduleSelection: function(e) {
-        e.preventDefault();
-        console.log(e.currentTarget.value);
+        console.log("clickEvent");
+        var selected = e.currentTarget.id;
+        this.setState({selectedTicket: selected});
+
+        var ticketPrice = Number(e.currentTarget.value).toFixed(2);
+        this.setState({selectedticketPrice: ticketPrice});
+
+        var totalTicketCost = Number(ticketPrice * 1).toFixed(2);
+        this.setState({totalTicketCost: totalTicketCost});
     },
 
    render: function() {
@@ -184,10 +209,12 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                     middleSchedule={this.state.middleSchedule}
                     rightSchedule={this.state.rightSchedule}
                     handleScheduleSelection={this.handleScheduleSelection}
-                    schedulesFound={this.state.schedulesFound}/>
+                    schedulesFound={this.state.schedulesFound}
+                    />
+
                 <TicketSummaryPanel buttonLink="SelectDeliveryMethod"
-                    sourceStation={this.state.sourceStation}
-                    destinationStation={this.state.destinationStation}
+                    sourceStation={this.state.sourceStation.sourceStationName}
+                    destinationStation={this.state.destinationStation.destinationStationName}
                     totalTicketCost={this.state.totalTicketCost}
                     schedulesFound={this.state.schedulesFound} />
            </div>

@@ -27,7 +27,7 @@ var ticketSummaryPanel = React.createClass({
                    <div className="panel panel-default">
                       <div className="panel-body">
                           <label>Total:</label>
-                          <h2 id="total">£40.50</h2>
+                          <h2 id="total">{this.props.totalTicketCost}</h2>
                           <br />
                           <Link to={this.props.buttonLink} params={{scheduleId: 1,
                                   numFCTickets: 1,
