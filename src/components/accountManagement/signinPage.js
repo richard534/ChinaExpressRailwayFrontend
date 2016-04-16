@@ -23,7 +23,7 @@ var SignInPage = React.createClass({
 
     getInitialState: function() {
         return {
-            loggedIn: auth.loggedIn(),
+            loggedIn: false,
             data: {
                 username: "",
                 password: ""
@@ -33,6 +33,14 @@ var SignInPage = React.createClass({
                 password: ""
             }
         };
+    },
+
+    componentWillMount: function() {
+        this.setState({loggedIn: auth.loggedIn()});
+    },
+
+    refeshPage: function() {
+        location.reload();
     },
 
     changeState: function () {
@@ -98,7 +106,7 @@ var SignInPage = React.createClass({
            header = <p>Signed in as <Link to="MyAccount"><strong>{loggedInUser}</strong></Link></p>;
            result =
            <div>
-               <button type="submit" className="btn btn-danger btn-block">Logout</button>
+               <button type="submit" className="btn btn-danger btn-block" onClick={this.refeshPage}>Logout</button>
            </div>;
 
        } else {
