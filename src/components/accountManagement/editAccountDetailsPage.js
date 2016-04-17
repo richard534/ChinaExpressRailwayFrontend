@@ -4,6 +4,7 @@ var React = require('react');
 var toastr = require('toastr');
 var validate = require('validate.js');
 var auth = require('../auth/auth.js');
+var _ = require('lodash');
 
 var AccountDetailsPanel = require('./accountManagementPanels/editAccountDetailsPanel');
 
@@ -123,13 +124,17 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
         var self = this;
         e.preventDefault();
         var id;
+        var URL;
 
         if(auth.loggedInAsPassenger()){
             id = auth.getPassengerId();
+            URL = "http://52.31.154.40:8087/passenger/updatePassengerAccount";
         } else if(auth.loggedInAsAdmin()){
             id = auth.getAdminId();
+            URL = "http://52.31.154.40:8087/admin/updateAccountAdmin";
         } else if(auth.loggedInAsEmployee()){
             id = auth.getEmployeeId();
+            URL = "http://52.31.154.40:8087/employee/updateEmployeeAccount";
         } else {
             return;
         }
@@ -152,13 +157,17 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/passenger/updatePassengerAccount',
+          url: URL,
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
+              if(results === false){
+                  toastr.error('Account Update failed');
+                  return;
+              }
               toastr.success('Account Updated');
           },
           error: function(jqXHR, textStatus, errorThrown) {
-              toastr.error('Error updating account details');
+              toastr.error('Account Update failed');
           }
         });
     },
