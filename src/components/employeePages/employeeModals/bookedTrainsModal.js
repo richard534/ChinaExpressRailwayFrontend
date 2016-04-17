@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
 var auth = require('../../auth/auth.js');
 var _ = require('lodash');
 var toastr = require('toastr');

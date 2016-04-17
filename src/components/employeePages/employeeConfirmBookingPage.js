@@ -21,6 +21,10 @@ var constraints = {
     }
 };
 var EmployeeConfirmBookingPage = React.createClass({
+    mixins: [
+        Router.Navigation
+    ],
+
     getInitialState: function() {
         return {
             scheduleId: 0,
@@ -78,8 +82,6 @@ var EmployeeConfirmBookingPage = React.createClass({
             numFirstClass: numFirstClass,
             numSecondClass: numStandardClass
         };
-        console.log(data);
-
 
         return $.ajax({
           type: "post",
@@ -92,6 +94,7 @@ var EmployeeConfirmBookingPage = React.createClass({
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Booking successful.');
+              self.transitionTo('EmployeeHome');
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error Booking Ticket');
