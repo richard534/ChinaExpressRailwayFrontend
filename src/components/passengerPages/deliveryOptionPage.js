@@ -75,7 +75,9 @@ var deliveryOptionPage = React.createClass({
                     class={this.state.class}
                     ticketPrice={this.state.ticketPrice}
                     showNumTicketSelector="false"
-                    totalNumTickets={this.state.numTickets} />
+                    totalNumTickets={this.state.numTickets}
+                    scheduleId={this.state.scheduleId}
+                    numTickets={this.state.numTickets} />
            </div>
        );
      }

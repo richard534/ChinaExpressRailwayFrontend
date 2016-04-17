@@ -78,8 +78,8 @@ var ticketSummaryPanel = React.createClass({
                           {ticketSelector}
                           <br />
                           <Link to={this.props.buttonLink} query={{
-                                  scheduleId: this.props.selectedTicket.id,
-                                  numTickets: this.props.selectedTicket.numTickets,
+                                  scheduleId: this.props.scheduleId,
+                                  numTickets: this.props.numTickets,
                                   ticketPrice: this.props.ticketPrice,
                                   sourceStation: this.props.sourceStation,
                                   destinationStation: this.props.destinationStation,

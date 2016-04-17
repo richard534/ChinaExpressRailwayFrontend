@@ -1,11 +1,16 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
 var PaymentPanel = require('./passengerPanels/paymentPanel.js');
 var toastr = require('toastr');
 var auth = require('../auth/auth.js');
 
 var paymentPage = React.createClass({
+    mixins: [
+        Router.Navigation
+    ],
+
     getInitialState: function() {
         return {
             scheduleId: 0,
@@ -72,6 +77,17 @@ var paymentPage = React.createClass({
     handleSubmit: function() {
         var self = this;
         var token = auth.getToken();
+
+        var numFirstClass = 0;
+        var numStandardClass = 0;
+
+        if(this.state.class === "First"){
+            numFirstClass = this.state.numTickets;
+        } else {
+            numStandardClass = this.state.numTickets;
+        }
+
+        var passengerID = this.state.passengerId;
         var ticketID = this.state.scheduleId;
 
         return $.ajax({
@@ -79,14 +95,12 @@ var paymentPage = React.createClass({
           headers: {
               "Authorization": token
           },
-          data: {
-              "ticketID": ticketID
-          }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/ticket/getTicket',
+          url: 'http://52.31.154.40:8087/ticket/booking?passengerID=' + passengerID + '&scheduleID=' + ticketID + '&firstClassTickets=' + numFirstClass + '&secondClassTickets=' + numStandardClass,
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Booking successful.');
+              self.transitionTo('app');
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error Booking Ticket');

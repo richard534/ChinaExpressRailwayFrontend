@@ -26,7 +26,6 @@ function requestAuthentication(username, pass, cb) {
                 }
                 // Determine if user is passenger, employee or admin and set associated flag
                 var token = tokenResults; // Account token
-                console.log(tokenResults);
                 if(username.startsWith('a/') || username.startsWith('A/')){
                     // user is admin
                     cb({
@@ -69,7 +68,6 @@ function getAdminAccount(username, token, cb) {
         dataType: 'json', // The type of data that you're expecting back from the server
         url: 'http://52.31.154.40:8087/admin/getAdminAccount?username=' + username,
         success: function(result) {
-            console.log(result);
             cb({
                 Id: result.adminId,
                 username: result.person.userName
@@ -90,7 +88,6 @@ function getEmployeeAccount(username, token, cb) {
         dataType: 'json', // The type of data that you're expecting back from the server
         url: 'http://52.31.154.40:8087/employee/getEmployeeAccount?username=' + username,
         success: function(result) {
-            console.log(result);
             cb({
                 Id: result.employeeId,
                 username: result.person.userName
@@ -111,7 +108,6 @@ function getPassengerAccount(username, token, cb) {
         dataType: 'json', // The type of data that you're expecting back from the server
         url: 'http://52.31.154.40:8087/passenger/getPassengerAccount?username=' + username,
         success: function(result) {
-            console.log(result);
             cb({
                 Id: result.passengerID,
                 username: result.person.userName
@@ -144,8 +140,6 @@ module.exports = {
                 var accountType = res.type;
                 var usernameToRequest = res.username;
                 var token = res.token;
-
-                console.log(res);
 
                 if(accountType === "admin") {
                     getAdminAccount(usernameToRequest, token, function(getAdminAccountResult) {

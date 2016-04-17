@@ -271,7 +271,9 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                     class={this.state.selectedTicket.class}
                     ticketPrice={this.state.selectedTicket.totalPrice}
                     onUpdate={this.onUpdate}
-                    showNumTicketSelector="true"/>
+                    showNumTicketSelector="true"
+                    scheduleId={this.state.selectedTicket.id}
+                    numTickets={this.state.selectedTicket.numTickets} />
            </div>
        );
     }

@@ -12,13 +12,13 @@ var paymentPanel = React.createClass({
 
        var renderEnabledPayButton = function() {
            return (
-               <button type="submit" className="btn btn-primary btn-block" onSubmit={self.props.handleSubmit}>Pay Now</button>
+               <button type="submit" className="btn btn-primary btn-block">Pay Now</button>
            );
        };
 
        var renderDisabledPayButton = function() {
            return (
-               <button type="submit" className="btn btn-primary btn-block" disabled>Pay Now</button>
+               <button type="button" className="btn btn-primary btn-block" disabled>Pay Now</button>
            );
        };
 
@@ -35,15 +35,17 @@ var paymentPanel = React.createClass({
            <div className="col-md-4">
               <div className="panel panel-default">
                  <div className="panel-body">
-                     <label>Total:</label>
-                     <h2 id="total">£{this.props.ticketPrice}</h2>
-                     <br />
-                     <label>Current Amount in Wallet:</label>
-                     <h4 id="total">£{this.props.ammountInWallet}</h4>
-                     <label>Amount in Wallet After Purchase:</label>
-                     <h4 id="total">£{this.props.ammountLeftInWallet}</h4>
-                     <br />
-                     {payButton}
+                     <form onSubmit={this.props.handleSubmit}>
+                         <label>Total:</label>
+                         <h2 id="total">£{this.props.ticketPrice}</h2>
+                         <br />
+                         <label>Current Amount in Wallet:</label>
+                         <h4 id="total">£{this.props.ammountInWallet}</h4>
+                         <label>Amount in Wallet After Purchase:</label>
+                         <h4 id="total">£{this.props.ammountLeftInWallet}</h4>
+                         <br />
+                         {payButton}
+                     </form>
                      <hr />
                      <div className='row'>
                          <div className="col-md-4">
