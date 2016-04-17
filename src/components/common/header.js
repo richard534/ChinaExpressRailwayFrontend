@@ -15,18 +15,19 @@ var Header = React.createClass({
 
         var renderSignedInNav = function() {
             return (
-                <ul className="nav navbar-nav navbar-right">
-                    <li className="nav">
-                        <p className="navbar-text"><Link to="Registration" className="navbar-link">Register</Link></p>
-                    </li>
-                    <li className="nav">
-                        <p className="navbar-text"><Link to="MyAccount" className="navbar-link">{auth.getUsername()}</Link></p>
-                    </li>
-                    <li className="nav">
-                        <p className="navbar-text"><Link to="SigninPage" className="navbar-link">{accountButton}</Link></p>
-                    </li>
-                </ul>
-
+                <div className="navbar-collapse collapse">
+                    <ul className="nav navbar-nav navbar-right">
+                        <li className="nav">
+                            <p className="navbar-text"><Link to="Registration" className="navbar-link">Register</Link></p>
+                        </li>
+                        <li className="nav">
+                            <p className="navbar-text"><Link to="MyAccount" className="navbar-link">{auth.getUsername()}</Link></p>
+                        </li>
+                        <li className="nav">
+                            <p className="navbar-text"><Link to="SigninPage" className="navbar-link">{accountButton}</Link></p>
+                        </li>
+                    </ul>
+                </div>
             );
         };
 
@@ -65,6 +66,8 @@ var Header = React.createClass({
                 <div className="row" id="headerRow">
                     <div className="col-md-4">
                         <div className="navbar-header">
+                            <a className="btn btn-success btn-sm navbar-toggle"
+                                data-toggle="collapse" data-target=".navbar-collapse"><span className="glyphicon glyphicon-menu-hamburger"></span></a>
                             <Link to={brandLink} className="navbar-brand"><img className="img-responsive pull-left" width="200" alt="Brand" src="/images/CER_logo.png"/></Link>
                         </div>
                     </div>
