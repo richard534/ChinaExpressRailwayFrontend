@@ -107,6 +107,7 @@ var ManageWalletPage = React.createClass({
 
     submitPayment: function(e) {
         e.preventDefault();
+        var self = this;
 
         var passengerID = this.state.passengerID;
         var ammontToAdd = this.state.data.ammountToAddToWallet;

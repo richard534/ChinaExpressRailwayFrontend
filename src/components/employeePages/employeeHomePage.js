@@ -41,28 +41,21 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         var self = this;
         var token = auth.getToken();
         var ticketID = this.state.ticket.ticketId;
-        console.log(ticketID);
 
         return $.ajax({
           type: "post",
           headers: {
               "Authorization": token
           },
-          data: {
-              "ticketID": ticketID
-          }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/ticket/cancelTicket',
-          dataType: 'json', // The type of data that you're expecting back from the server
+          url: 'http://52.31.154.40:8087/ticket/cancelTicket?ticketID=' + ticketID,
+          dataType: 'text', // The type of data that you're expecting back from the server
           success: function(results) {
-              if(_.isEmpty(results)){
-                  toastr.error('No ticket found');
-                  return;
-              }
-              toastr.success('Ticket Deleted');
+              toastr.success('Ticket Canceled');
+              location.reload();
           },
           error: function(jqXHR, textStatus, errorThrown) {
-            toastr.error('Error deleting ticket');
+            toastr.error('Error Cancelling ticket');
             console.log(textStatus + " " + errorThrown);
           }
         });
@@ -103,10 +96,10 @@ var employeeHomePage = auth.requireAuth(React.createClass({
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
-                  toastr.error('Error retrieving canceled tickets report');
+                  toastr.error('No canceled tickets present on system');
                   return;
               }
-              this.setState({canceledTicketReport: results});
+              self.setState({canceledTicketReport: results});
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving canceled tickets report');
@@ -132,10 +125,10 @@ var employeeHomePage = auth.requireAuth(React.createClass({
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
-                  toastr.error('Error retrieving booked tickets report');
+                  toastr.error('No booked tickets present on system');
                   return;
               }
-              this.setState({bookedTicketReport: results});
+              self.setState({bookedTicketReport: results});
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving booked tickets report');

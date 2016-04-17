@@ -75,3 +75,8 @@ footer {
 .reportThumbnailPadding {
     padding-right: 5px
 }
+
+.modal-lg {
+    width: 1500px;
+    height: 900px;
+}
