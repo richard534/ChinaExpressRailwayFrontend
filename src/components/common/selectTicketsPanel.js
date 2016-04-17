@@ -55,28 +55,28 @@ var selectTicketsPanel = React.createClass({
                               <td className="text-center">
                                   <div className="radio">
                                      <label>
-                                       <input type="radio" name="optionsRadios" onClick={this.props.handleScheduleSelection} id="leftS" value="3.30" />
+                                       <input type="radio" name="scheduleRadio" id="leftS" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.leftSchedule.scheduleID} data-price="3.30" data-date={this.props.leftSchedule.date} data-time={this.props.leftSchedule.time} data-class="Standard" value="3.30"/>
                                      </label>
                                      <p className="text-center ticketBookMoney">£3.30</p>
-                                     <p className="text-center ticketBookMoney">Num Tickets: {this.props.leftSchedule.availableStandardClass}</p>
+                                     <p className="text-center ticketBookMoney">Tickets Available: {this.props.leftSchedule.availableStandardClass}</p>
                                    </div>
                               </td>
                               <td className="text-center">
                                   <div className="radio">
                                      <label>
-                                       <input type="radio" name="optionsRadios" id="optionsRadios1" onClick={this.props.handleScheduleSelection} id="midS" value="3.30" />
+                                       <input type="radio" name="scheduleRadio" id="midS" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.middleSchedule.scheduleID} data-price="3.30" data-date={this.props.middleSchedule.date} data-time={this.props.middleSchedule.time} data-class="Standard" value="3.30" />
                                      </label>
                                      <p className="text-center ticketBookMoney">£3.30</p>
-                                     <p className="text-center ticketBookMoney">Num Tickets: {this.props.middleSchedule.availableStandardClass}</p>
+                                     <p className="text-center ticketBookMoney">Tickets Available: {this.props.middleSchedule.availableStandardClass}</p>
                                    </div>
                               </td>
                               <td className="text-center">
                                   <div className="radio">
                                      <label>
-                                       <input type="radio" name="optionsRadios" id="optionsRadios1" onClick={this.props.handleScheduleSelection} id="rightS" value="3.30" />
+                                       <input type="radio" name="scheduleRadio" id="rightS" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.rightSchedule.scheduleID} data-price="3.30" data-date={this.props.rightSchedule.date} data-time={this.props.rightSchedule.time} data-class="Standard" value="3.30" />
                                      </label>
                                      <p className="text-center ticketBookMoney">£3.30</p>
-                                     <p className="text-center ticketBookMoney">Num Tickets: {this.props.rightSchedule.availableStandardClass}</p>
+                                     <p className="text-center ticketBookMoney">Tickets Available: {this.props.rightSchedule.availableStandardClass}</p>
                                    </div>
                               </td>
                           </tr>
@@ -85,28 +85,28 @@ var selectTicketsPanel = React.createClass({
                                   <td className="text-center">
                                       <div className="radio">
                                          <label>
-                                           <input type="radio" name="optionsRadios" id="optionsRadios1" onClick={this.props.handleScheduleSelection} id="leftF" value="4.60" />
+                                           <input type="radio" name="scheduleRadio" id="leftF" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.leftSchedule.scheduleID} data-price="4.60" data-date={this.props.leftSchedule.date} data-time={this.props.leftSchedule.time} data-class="First" value="4.60" />
                                          </label>
                                          <p className="text-center ticketBookMoney">£4.40</p>
-                                         <p className="text-center ticketBookMoney">Num Tickets: {this.props.leftSchedule.availableFirstClass}</p>
+                                         <p className="text-center ticketBookMoney">Tickets Available: {this.props.leftSchedule.availableFirstClass}</p>
                                        </div>
                                   </td>
                                   <td className="text-center">
                                       <div className="radio">
                                          <label>
-                                           <input type="radio" name="optionsRadios" id="optionsRadios1" onClick={this.props.handleScheduleSelection} id="midF" value="4.60" />
+                                           <input type="radio" name="scheduleRadio" id="midF" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.middleSchedule.scheduleID} data-price="4.60" data-date={this.props.middleSchedule.date} data-time={this.props.middleSchedule.time} data-class="First" value="4.60" />
                                          </label>
                                          <p className="text-center ticketBookMoney">£4.40</p>
-                                         <p className="text-center ticketBookMoney">Num Tickets: {this.props.middleSchedule.availableFirstClass}</p>
+                                         <p className="text-center ticketBookMoney">Tickets Available: {this.props.middleSchedule.availableFirstClass}</p>
                                        </div>
                                   </td>
                                   <td className="text-center">
                                       <div className="radio">
                                          <label>
-                                           <input type="radio" name="optionsRadios" id="optionsRadios1" onClick={this.props.handleScheduleSelection} id="rightF" value="4.60" />
+                                           <input type="radio" name="scheduleRadio" id="rightF" onClick={this.props.handleScheduleSelection} data-scheduleid={this.props.rightSchedule.scheduleID} data-price="4.60" data-date={this.props.rightSchedule.date} data-time={this.props.rightSchedule.time} data-class="First" value="4.60" />
                                          </label>
                                          <p className="text-center ticketBookMoney">£4.40</p>
-                                         <p className="text-center ticketBookMoney">Num Tickets: {this.props.rightSchedule.availableFirstClass}</p>
+                                         <p className="text-center ticketBookMoney">Tickets Available: {this.props.rightSchedule.availableFirstClass}</p>
                                        </div>
                                   </td>
                           </tr>

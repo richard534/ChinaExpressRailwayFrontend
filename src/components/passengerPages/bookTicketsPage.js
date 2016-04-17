@@ -33,24 +33,36 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
             leftSchedule: {
                 scheduleID: 0,
                 date: "",
+                time: "",
                 availableFirstClass: 0,
                 availableStandardClass: 0
             },
             middleSchedule: {
                 scheduleID: 0,
                 date: "",
+                time: "",
                 availableFirstClass: 0,
                 availableStandardClass: 0
             },
             rightSchedule: {
                 scheduleID: 0,
                 date: "",
+                time: "",
                 availableFirstClass: 0,
                 availableStandardClass: 0
             },
-            selectedTicket: "",
-            selectedticketPrice: 0,
-            totalTicketCost: 3.30
+
+            selectedTicket: {
+                id: "",
+                individualprice: 0,
+                totalPrice: 0,
+                date: "",
+                time: "",
+                class: "",
+                numTickets: 1
+            },
+
+            continueBtn: true
         };
     },
 
@@ -78,6 +90,12 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           url: 'http://52.31.154.40:8087/train/station',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
+              if(_.isEmpty(results)){
+                  toastr.error('No tickets found');
+                  self.setState({schedulesFound: false});
+                  return;
+              }
+
               self.setState({
                   sourceStation: {
                       sourceStationName: results[0].name,
@@ -106,6 +124,12 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           url: 'http://52.31.154.40:8087/train/station',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
+              if(_.isEmpty(results)){
+                  toastr.error('No tickets found');
+                  self.setState({schedulesFound: false});
+                  return;
+              }
+
               self.setState({
                   destinationStation: {
                       destinationStationName: results[0].name,
@@ -157,21 +181,24 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
 
               var leftSchedule = {
                   date: (new Date(self.state.schedules[0].departureDate)).toDateString(),
+                  time: (new Date(self.state.schedules[0].departureTime)).toTimeString(),
                   scheduleID: self.state.schedules[0].scheduleID,
                   availableFirstClass: self.state.schedules[0].availableFirstClass,
-                  availableStandardClass: self.state.schedules[0].availableStandardClass
+                  availableStandardClass: self.state.schedules[0].availableSecondClass
               };
               var middleSchedule = {
                   date: (new Date(self.state.schedules[1].departureDate)).toDateString(),
+                  time: (new Date(self.state.schedules[1].departureTime)).toTimeString(),
                   scheduleID: self.state.schedules[1].scheduleID,
                  availableFirstClass: self.state.schedules[1].availableFirstClass,
-                  availableStandardClass: self.state.schedules[1].availableStandardClass
+                  availableStandardClass: self.state.schedules[1].availableSecondClass
               };
               var rightSchedule = {
                   date: (new Date(self.state.schedules[2].departureDate)).toDateString(),
+                  time: (new Date(self.state.schedules[2].departureTime)).toTimeString(),
                   scheduleID: self.state.schedules[2].scheduleID,
                   availableFirstClass: self.state.schedules[2].availableFirstClass,
-                  availableStandardClass: self.state.schedules[2].availableStandardClass
+                  availableStandardClass: self.state.schedules[2].availableSecondClass
               };
 
               self.setState({ leftSchedule: leftSchedule});
@@ -186,16 +213,40 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
-    handleScheduleSelection: function(e) {
-        var selected = e.currentTarget.id;
-        this.setState({selectedTicket: selected});
+    onUpdate: function(val){
+        var numTickets = val.numTickets;
 
-        var ticketPrice = Number(e.currentTarget.value).toFixed(2);
-        this.setState({selectedticketPrice: ticketPrice});
-
-        var totalTicketCost = Number(ticketPrice * 1).toFixed(2);
-        this.setState({totalTicketCost: totalTicketCost});
+        var ticket = this.state.selectedTicket;
+        ticket.numTickets = numTickets;
+        ticket.totalPrice = Number(ticket.individualprice * numTickets).toFixed(2);
+        this.setState({numTickets: ticket});
     },
+
+    handleScheduleSelection: function(e) {
+        var selectedScheduleId = e.target.getAttribute('data-scheduleId');
+        var selectedScheduleDate = e.target.getAttribute('data-date');
+        var selectedScheduleTime = e.target.getAttribute('data-time').substring(0, 8);
+        var selectedScheduleClass = e.target.getAttribute('data-class');
+        var selectedSchedulePrice = Number(e.target.getAttribute('data-price')).toFixed(2);
+        var numTickets = this.state.selectedTicket.numTickets;
+        var totalTicketCost = Number(selectedSchedulePrice * numTickets).toFixed(2);
+
+
+        var selectedTicket = {
+            id: selectedScheduleId,
+            individualprice: selectedSchedulePrice,
+            totalPrice: totalTicketCost,
+            date: selectedScheduleDate,
+            time: selectedScheduleTime,
+            class: selectedScheduleClass,
+            numTickets: numTickets
+        };
+
+        this.setState({selectedTicket: selectedTicket});
+        this.setState({continueBtn: false}); // Enable continue button on summary panel
+    },
+
+
 
    render: function() {
 
@@ -214,8 +265,16 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
                 <TicketSummaryPanel buttonLink="SelectDeliveryMethod"
                     sourceStation={this.state.sourceStation.sourceStationName}
                     destinationStation={this.state.destinationStation.destinationStationName}
-                    totalTicketCost={this.state.totalTicketCost}
-                    schedulesFound={this.state.schedulesFound} />
+                    schedulesFound={this.state.schedulesFound}
+                    continueBtn={this.state.continueBtn}
+                    selectedTicket={this.state.selectedTicket}
+                    totalNumTickets={this.state.totalNumTickets}
+                    date={this.state.selectedTicket.date}
+                    time={this.state.selectedTicket.time}
+                    class={this.state.selectedTicket.class}
+                    ticketPrice={this.state.selectedTicket.totalPrice}
+                    onUpdate={this.onUpdate}
+                    showNumTicketSelector="true"/>
            </div>
        );
     }

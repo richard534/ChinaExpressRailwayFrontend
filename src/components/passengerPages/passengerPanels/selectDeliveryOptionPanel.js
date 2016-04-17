@@ -4,7 +4,6 @@ var React = require('react');
 
 var selectDeliveryOptionPanel = React.createClass({
 
-
    render: function() {
        return (
            <div className="col-md-8">
@@ -32,7 +31,7 @@ var selectDeliveryOptionPanel = React.createClass({
                             </li>
                             <hr />
                             <div className="col-md-12">
-                                <p className="text-center">We will send your E-Ticket to the following Email Address: Testemail@gmail.com</p>
+                                <p className="text-center">We will send your E-Ticket to the following Email Address: <strong>{this.props.email}</strong></p>
                             </div>
                         </ul>
 
