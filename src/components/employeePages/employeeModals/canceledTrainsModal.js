@@ -29,6 +29,11 @@ var CanceledTrainsModal = React.createClass({
            } else {
                status = "Not Cancelled";
            }
+           var departureDate = new Date(report.schedule.departureDate).toDateString();
+           var departureTime = new Date(report.schedule.departureTime).toDateString();
+           var arrivalDate = new Date(report.schedule.arrivalDate).toDateString();
+           var arrivalTime = new Date(report.schedule.arrivalTime).toDateString();
+
             return (
                 <tr key={report.routeID}>
                     <td>{report.ticketID}</td>
@@ -36,10 +41,10 @@ var CanceledTrainsModal = React.createClass({
                     <td>{report.schedule.trainRoute.train.trainName}</td>
                     <td>{report.schedule.trainRoute.sourceStation.name}</td>
                     <td>{report.schedule.trainRoute.arrivalStation.name}</td>
-                    <td>{report.schedule.departureDate}</td>
-                    <td>{report.schedule.departureTime}</td>
-                    <td>{report.schedule.arrivalDate}</td>
-                    <td>{report.schedule.arrivalTime}</td>
+                    <td>{departureDate}</td>
+                    <td>{departureTime}</td>
+                    <td>{arrivalDate}</td>
+                    <td>{arrivalTime}</td>
                     <td>{report.numberOfSecondClass}</td>
                     <td>{report.numberOfFirstClass}</td>
                     <td>{status}</td>
