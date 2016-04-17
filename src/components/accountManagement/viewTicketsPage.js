@@ -3,10 +3,98 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var auth = require('../auth/auth.js');
+var toastr = require('toastr');
+var _ = require('lodash');
 
 var ViewTickesPage = React.createClass({
+    getInitialState: function() {
+        return {
+            tickets: []
+        };
+
+    },
+
+
+    componentWillMount: function() {
+        this.getTicketList();
+    },
+
+    getTicketList: function() {
+        var self = this;
+        var token = auth.getToken();
+        var passengerID = auth.getPassengerId();
+
+        return $.ajax({
+          type: "get",
+          headers: {
+              "Authorization": token
+          },
+          data: {
+              "passengerID": passengerID
+          }, // Data to be sent to the server
+          contentType: 'application/x-www-form-urlencoded',
+          url: 'http://52.31.154.40:8087/ticket/previousTickets',
+          dataType: 'json', // The type of data that you're expecting back from the server
+          success: function(results) {
+              if(_.isEmpty(results)) {
+                  toastr.error('No Tickets found for this account');
+              }
+
+              self.setState({tickets: results});
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              toastr.error('Error retrieving passenger tickets');
+          }
+        });
+    },
 
    render: function() {
+       var table;
+       var tickets = this.state.tickets;
+
+       var renderNoTicketsTable = function() {
+           return (
+                <h4>No Tickets Found</h4>
+           );
+       };
+
+       var createTicketRow = function(ticket) {
+            return (
+                <tr key={ticket.routeID}>
+                    <td>{ticket.ticketNum}</td>
+                    <td>{ticket.departureDate}</td>
+                    <td>{ticket.depaertureTime}</td>
+                    <td>{ticket.status}</td>
+                </tr>
+            );
+        };
+
+       var renderTicketsTable = function() {
+           return (
+               <table className="table table-bordered table-striped">
+                  <tr>
+                     <td>Route</td>
+                     <td>TicketNum</td>
+                     <td>Departure Date/Time</td>
+                     <td>Arrival Date/Time</td>
+                     <td>Status</td>
+                 </tr>
+                 <tr>
+                     {tickets.map(createTicketRow)}
+                 </tr>
+               </table>
+           );
+       };
+
+       if(_.isEmpty(tickets)){
+           table = renderNoTicketsTable();
+       } else {
+           table = renderTicketsTable();
+       }
+
+
+
        return (
             <div className="container">
                 <div className="row">
@@ -19,63 +107,12 @@ var ViewTickesPage = React.createClass({
                         <div className="panel-body">
                             <h4>My Tickets</h4>
                             <br/>
-                            <form className="form-horizontal">
-                                <div className="form-group pull-left">
-                                  <label className="col-md-4 control-label">Show me:</label>
-                                      <div className="col-md-8">
-                                          <select className="form-control">
-                                              <option>All Tickets</option>
-                                              <option>Tickets From Last Week</option>
-                                              <option>Tickets From Last Month</option>
-                                          </select>
-                                        </div>
-                                </div>
-                            </form>
+                            {table}
 
-                            <table className="table table-bordered table-striped">
-                               <tr>
-                                  <td>Route</td>
-                                  <td>TicketNum</td>
-                                  <td>Departure Date/Time</td>
-                                  <td>Arrival Date/Time</td>
-                                  <td>Status</td>
-                              </tr>
-                              <tr>
-                                  <td>Shanghai-Beijing</td>
-                                  <td>123</td>
-                                  <td>5th June 11:25</td>
-                                  <td>5th June 17:00</td>
-                                  <td>Booked</td>
-                              </tr>
-                            </table>
-                            <nav>
-                                <ul className="pager">
-                                  <li className="previous disabled"><a href="#" onClick=""><span aria-hidden="true">&larr;</span> Previous</a></li>
-                                  <li className="next"><a href="#" onClick="">Next <span aria-hidden="true">&rarr;</span></a></li>
-                                </ul>
-                              </nav>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-md-8">
-                    <div className="panel panel-default">
-                        <div className="panel-body">
-                            <h4>Re-send Tickets</h4>
-                            <br/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <label className="col-md-4 control-label">Enter ID of Ticket to send:</label>
-                                  <div className="col-md-8">
-                                      <input className="form-control"placeholder="Enter Ticket ID..." />
-                                  </div>
-                              </div>
-                            </form>
-                              <hr/>
-                              <p className="text-center">We will send your ticket to: TestEmail@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
                 <div className="col-md-12">
                     <Link to="MyAccount"><button className="btn btn-primary">Back</button></Link>
                     <br/><br/>
