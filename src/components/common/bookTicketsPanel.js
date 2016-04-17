@@ -109,7 +109,7 @@ var bookTicketsPanel = React.createClass({
 
     var disabledBookTicketsButton = function() {
         return (
-            <button type="submit" className="btn btn-primary btn-block disabled">Book Tickets</button>
+            <button type="button" className="btn btn-primary btn-block disabled">Book Tickets</button>
         );
     };
 

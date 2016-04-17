@@ -140,7 +140,7 @@ var RegistrationPage = React.createClass({
 
        var disabledCreateAccountButton = function() {
            return (
-               <button type="submit" className="btn btn-primary btn-block disabled">Create Account</button>
+               <button type="button" className="btn btn-primary btn-block disabled">Create Account</button>
            );
        };
 

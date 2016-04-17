@@ -54,7 +54,7 @@ var EditAccountDetailsPanel = React.createClass({
 
        var disabledUpdateAccountButton = function() {
            return (
-               <button type="submit" className="btn btn-primary btn-block disabled">Update Account</button>
+               <button type="button" className="btn btn-primary btn-block disabled">Update Account</button>
            );
        };
 
