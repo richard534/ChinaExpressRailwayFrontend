@@ -10,7 +10,7 @@ var CurrentAmmountInWallet = React.createClass({
                    <div className="panel panel-default">
                        <div className="panel-body">
                            <p className="text-muted">Current Amount In Wallet</p>
-                           <h4>£40.50</h4>
+                           <h4>£{this.props.walletBalance}</h4>
                        </div>
                    </div>
                </div>
