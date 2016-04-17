@@ -6,6 +6,8 @@ var auth = require('../auth/auth.js');
 var validate = require('validate.js');
 var _ = require('lodash');
 var toastr = require('toastr');
+var BookedTrainsModal = require('./employeeModals/bookedTrainsModal');
+var CanceledTrainsModal = require('./employeeModals/canceledTrainsModal');
 
 var ticketConstraints = {
     ticketId: {
@@ -26,7 +28,9 @@ var employeeHomePage = auth.requireAuth(React.createClass({
                 },
                 ticketErrors: {
                     ticketId: "Enter Ticket Num"
-                }
+                },
+                bookedTicketReport: "",
+                canceledTicketReport: ""
         };
     },
 
@@ -79,6 +83,64 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         } else {
             this.setState({ticketErrors: {}});
         }
+    },
+
+    getCanceledTicketsReport: function() {
+        var self = this;
+        var token = auth.getToken();
+        var ticketID = this.props.ticketID;
+
+        return $.ajax({
+          type: "get",
+          headers: {
+              "Authorization": token
+          },
+          data: {
+              "ticketID": ticketID
+          }, // Data to be sent to the server
+          contentType: 'application/x-www-form-urlencoded',
+          url: 'http://52.31.154.40:8087/employee/getCancelledTickets',
+          dataType: 'json', // The type of data that you're expecting back from the server
+          success: function(results) {
+              if(_.isEmpty(results)){
+                  toastr.error('Error retrieving canceled tickets report');
+                  return;
+              }
+              this.setState({canceledTicketReport: results});
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              toastr.error('Error retrieving canceled tickets report');
+          }
+        });
+    },
+
+    getBookedTrainsReport: function() {
+        var self = this;
+        var token = auth.getToken();
+        var ticketID = this.props.ticketID;
+
+        return $.ajax({
+          type: "get",
+          headers: {
+              "Authorization": token
+          },
+          data: {
+              "ticketID": ticketID
+          }, // Data to be sent to the server
+          contentType: 'application/x-www-form-urlencoded',
+          url: 'http://52.31.154.40:8087/employee/getBookedTickets',
+          dataType: 'json', // The type of data that you're expecting back from the server
+          success: function(results) {
+              if(_.isEmpty(results)){
+                  toastr.error('Error retrieving booked tickets report');
+                  return;
+              }
+              this.setState({bookedTicketReport: results});
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              toastr.error('Error retrieving booked tickets report');
+          }
+        });
     },
 
    render: function() {
@@ -151,7 +213,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                                  <p className="smallPanelTextPadding">Here you can generate a booked trains report</p>
                                  <br/>
-                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Generate Booked Trains Report</button>
+                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton" data-toggle="modal" data-target="#BookedTrainsModal" onClick={this.getBookedTrainsReport}>Generate Booked Trains Report</button>
                              </div>
                          </div>
                       </div>
@@ -161,11 +223,13 @@ var employeeHomePage = auth.requireAuth(React.createClass({
                                  <img className="img-responsive pull-left" width="100" alt="Report" src="/images/reportImage.png"/>
                                  <p className="smallPanelTextPadding">Here you can generate a canceled trains report</p>
                                  <br/>
-                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton">Generate Canceled Trains Report</button>
+                                 <button type="submit" className="btn btn-primary btn-block" id="reportButton" data-toggle="modal" data-target="#CanceledTrainsModal" onClick={this.getCanceledTicketsReport}>Generate Canceled Trains Report</button>
                              </div>
                          </div>
                       </div>
                   </div>
+                  <BookedTrainsModal bookedTicketReport={this.state.bookedTicketReport} />
+                  <CanceledTrainsModal canceledTicketReport={this.state.canceledTicketReport} />
            </div>
 
        );
