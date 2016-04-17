@@ -4,9 +4,8 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
+// TODO add onsubmit/onchange props
 var paymentPanel = React.createClass({
-
-
    render: function() {
        var self = this;
        var payButton;

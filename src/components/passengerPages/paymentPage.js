@@ -58,10 +58,10 @@ var paymentPage = React.createClass({
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               var ammountInWallet = results.walletAmount;
-              self.setState({ammountInWallet: ammountInWallet});
+              self.setState({ammountInWallet: Number(ammountInWallet).toFixed(2)});
 
               var ammountLeft = ammountInWallet - self.state.ticketPrice;
-              self.setState({ammountLeftInWallet: ammountLeft});
+              self.setState({ammountLeftInWallet: Number(ammountLeft).toFixed(2)});
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error retrieving passenger details');
@@ -86,7 +86,7 @@ var paymentPage = React.createClass({
           url: 'http://52.31.154.40:8087/ticket/getTicket',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
-              toastr.success('Bookings successful.');
+              toastr.success('Booking successful.');
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Error Booking Ticket');

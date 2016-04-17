@@ -15,13 +15,32 @@ var ticketConstraints = {
     }
 };
 
+var constraints = {
+    sourceStation: {
+        presence: true
+    },
+    destinationStation: {
+        presence: true
+    },
+    departureDate: {
+        presence: true
+    }
+};
+
 var employeeHomePage = auth.requireAuth(React.createClass({
 
     getInitialState: function() {
         return {
-                sourceStation: "",
-                destinationStation: "",
-                departureDate: {},
+                data: {
+                    sourceStation: "",
+                    destinationStation: "",
+                    departureDate: "",
+                    departureTimeHour: "",
+                    departureTimeMin: ""
+                },
+                errors: {
+                    sourceStation: "Please enter your journey requirements"
+                },
 
                 ticket: {
                     ticketId: ""
@@ -34,7 +53,30 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         };
     },
 
-    // TODO check this is working
+    onUpdate: function(val){
+        this.setState({
+            data: {
+                sourceStation: val.sourceStation,
+                destinationStation: val.destinationStation,
+                departureDate: val.departureDate,
+                departureTimeHour: val.departureTimeHour,
+                departureTimeMin: val.departureTimeMin
+            }
+        }, this.validate);
+    },
+
+    validate: function () {
+        var validationErrors = validate(this.state.data, constraints);
+
+            if(validationErrors){
+                this.setState({errors: validationErrors});
+            } else {
+                this.setState({errors: {}});
+            }
+    },
+
+
+
     handleDeleteTicketSubmit: function(e) {
         e.preventDefault();
 
@@ -174,10 +216,16 @@ var employeeHomePage = auth.requireAuth(React.createClass({
                    <h1>Employee Home</h1>
                    <br/>
                </div>
-               <BookTicketsPanel buttonLink="EmployeeBookTickets"
-                   sourceStation={this.state.sourceStation}
-                   destinationStation={this.state.destinationStation}
-                   departureDate={this.state.departureDate} />
+
+               <BookTicketsPanel
+                   buttonLink="EmployeeBookTickets"
+                   sourceStation={this.state.data.sourceStation}
+                   destinationStation={this.state.data.destinationStation}
+                   departureDate={this.state.data.departureDate}
+                   departureTimeHour={this.state.data.departureTimeHour}
+                   departureTimeMin={this.state.data.departureTimeMin}
+                   onUpdate={this.onUpdate}
+                   errors={this.state.errors} />
 
                    <div className="col-md-8">
                        <div className="panel panel-default">

@@ -8,9 +8,6 @@ var toastr = require('toastr');
 var _ = require('lodash');
 var DateJs = require('datejs');
 
-// TODO populate h1 placeholders
-// TODO populate requested dates
-// TODO retrieve tickets using ajax call and diaplay viable tickets
 var BookTicketsPage = auth.requireAuth(React.createClass({
     getInitialState: function() {
         return {
