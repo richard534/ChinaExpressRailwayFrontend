@@ -53,7 +53,7 @@ var bookTicketsPanel = React.createClass({
             source: function (request, response) {
                 $.ajax({
                 type: "get",
-                url: 'http://52.31.154.40:8087/train/station',
+                url: 'http://localhost:8087/train/station',
                 dataType: 'json',
                 success: function(result) {
                     response($.map( result, function(item) {
@@ -75,7 +75,7 @@ var bookTicketsPanel = React.createClass({
             source: function (request, response) {
                 $.ajax({
                 type: "get",
-                url: 'http://52.31.154.40:8087/train/station',
+                url: 'http://localhost:8087/train/station',
                 dataType: 'json',
                 success: function(result) {
                     response($.map( result, function(item) {

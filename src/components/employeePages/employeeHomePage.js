@@ -90,7 +90,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/ticket/cancelTicket?ticketID=' + ticketID,
+          url: 'http://localhost:8087/ticket/cancelTicket?ticketID=' + ticketID,
           dataType: 'text', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Ticket Canceled');
@@ -134,7 +134,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
               "ticketID": ticketID
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/employee/getCancelledTickets',
+          url: 'http://localhost:8087/employee/getCancelledTickets',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
@@ -163,7 +163,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
               "ticketID": ticketID
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/employee/getBookedTickets',
+          url: 'http://localhost:8087/employee/getBookedTickets',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){

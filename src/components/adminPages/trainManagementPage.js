@@ -35,7 +35,7 @@ var TrainManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/getAllTrains',
+          url: 'http://localhost:8087/train/getAllTrains',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
@@ -60,7 +60,7 @@ var TrainManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/deleteTrain?trainID=' + trainID,
+          url: 'http://localhost:8087/train/deleteTrain?trainID=' + trainID,
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){
@@ -94,7 +94,7 @@ var TrainManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/createTrain',
+          url: 'http://localhost:8087/train/createTrain',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){

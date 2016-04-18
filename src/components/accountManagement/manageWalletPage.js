@@ -131,7 +131,7 @@ var ManageWalletPage = React.createClass({
           },
           data: data, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/passenger/addFunds',
+          url: 'http://localhost:8087/passenger/addFunds',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Funds added successfully');
@@ -157,7 +157,7 @@ var ManageWalletPage = React.createClass({
               "username": username
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/passenger/getPassengerAccount',
+          url: 'http://localhost:8087/passenger/getPassengerAccount',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               self.setState({walletBalance: Number(results.walletAmount).toFixed(2)});

@@ -93,13 +93,13 @@ var ManageAccountsPage = React.createClass({
                 toastr.error("Employee Accounts must start with /e");
                 return;
             }
-            URL = "http://52.31.154.40:8087/employee/createAccountEmployee";
+            URL = "http://localhost:8087/employee/createAccountEmployee";
         } else {
             if(!username.startsWith("a/")) {
                 toastr.error("Admin Accounts must start with /a");
                 return;
             }
-            URL = "http://52.31.154.40:8087/admin/createAccountAdmin";
+            URL = "http://localhost:8087/admin/createAccountAdmin";
         }
 
         var data = {

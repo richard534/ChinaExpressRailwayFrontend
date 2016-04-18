@@ -59,7 +59,7 @@ var paymentPage = React.createClass({
               "username": username
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/passenger/getPassengerAccount',
+          url: 'http://localhost:8087/passenger/getPassengerAccount',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               var ammountInWallet = results.walletAmount;
@@ -96,7 +96,7 @@ var paymentPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/ticket/booking?passengerID=' + passengerID + '&scheduleID=' + ticketID + '&firstClassTickets=' + numFirstClass + '&secondClassTickets=' + numStandardClass,
+          url: 'http://localhost:8087/ticket/booking?passengerID=' + passengerID + '&scheduleID=' + ticketID + '&firstClassTickets=' + numFirstClass + '&secondClassTickets=' + numStandardClass,
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Booking successful.');

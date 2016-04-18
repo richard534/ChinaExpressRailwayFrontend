@@ -105,7 +105,7 @@ var RegistrationPage = React.createClass({
           type: "post",
           data: data, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/passenger/createAccountPassenger',
+          url: 'http://localhost:8087/passenger/createAccountPassenger',
           dataType: 'text', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Account Created');
