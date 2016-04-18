@@ -5,7 +5,6 @@ var Router = require('react-router');
 var Link = Router.Link;
 var auth = require('../auth/auth.js');
 
-// TODO add signout button when user is logged in
 var Header = React.createClass({
 
     render: function() {

@@ -49,7 +49,7 @@ var StationManagementPage = React.createClass({
     // TODO add station deletion
     handleStationDelete: function(e) {
         e.preventDefault();
-        console.log("delelteStation");
+        console.log("Delete Station");
     },
 
     handleAddStation: function(e) {

@@ -33,13 +33,56 @@ var ScheduleManagementPage = React.createClass({
         var self = this;
         var token = auth.getToken();
 
+        $.ajax({
+          type: "get",
+          headers: {
+              "Authorization": token
+          },
+          contentType: 'application/x-www-form-urlencoded',
+          url: 'http://52.31.154.40:8087/schedule/getAllSchedules',
+          dataType: 'json', // The type of data that you're expecting back from the server
+          success: function(results) {
+              if(_.isEmpty(results)) {
+                  toastr.error('No schedules found');
+              }
+              self.setState({schedules: results});
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              toastr.error('Error retrieving schedules');
+          }
+        });
     },
 
-    // TODO add delete schedule
     handleDeleteSchedule: function(e) {
         e.preventDefault();
         var token = auth.getToken();
-        console.log("Delete");
+        var trainID = this.state.trainID;
+
+        var data = {
+            scheduleID: this.state.scheduleID
+        };
+
+        $.ajax({
+          type: "post",
+          headers: {
+              "Authorization": token
+          },
+          data: data,
+          contentType: 'application/x-www-form-urlencoded',
+          url: 'http://52.31.154.40:8087/schedule/deleteSchedule',
+          dataType: 'json', // The type of data that you're expecting back from the server
+          success: function(results) {
+              if(results === false){
+                  toastr.error('Schedule Deleted');
+                  return;
+              }
+              toastr.success('Schedule Deleted');
+              location.reload();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              toastr.error('Delete Schedule Failed');
+          }
+        });
 
     },
 
@@ -49,7 +92,6 @@ var ScheduleManagementPage = React.createClass({
         var self = this;
         var token = auth.getToken();
 
-        console.log(self.state.departureDate);
         var requestedDDate = new Date(self.state.departureDate);
         var departureDate = requestedDDate.toString("ddd, MMM dd yyyy");
 

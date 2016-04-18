@@ -218,7 +218,7 @@ module.exports = {
 
     onChange: function onChange() {},
 
-    requireAuth: function(Component, roleRequired) { // TODO maybe add parameter that specifies account type required
+    requireAuth: function(Component, roleRequired) {
         var self = this;
         return React.createClass({
             statics: {

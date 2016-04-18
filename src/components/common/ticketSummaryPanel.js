@@ -22,7 +22,6 @@ var ticketSummaryPanel = React.createClass({
         };
     },
 
-    // TODO set params to pass query
     handleChange: function() {
         var values = {
             numTickets: this.refs.numTicket.getDOMNode().value
