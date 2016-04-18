@@ -12,41 +12,29 @@ var AddNewRoutePanel = React.createClass({
                    <div className="panel-body">
                         <h4>Add New Route</h4>
                         <br/>
-                        <form className="form-horizontal">
+                        <form className="form-horizontal" onSubmit={this.props.handleAddRoute}>
                             <div className="form-group">
-                              <label htmlFor="source" className="col-md-3 control-label">Source Station:</label>
+                              <label className="col-md-3 control-label">Source Station ID:</label>
                                   <div className="col-md-9 pull-left">
-                                      <select className="form-control" id="source">
-                                          <option>01</option>
-                                          <option>02</option>
-                                          <option>03</option>
-                                      </select>
+                                      <input className="form-control" onChange={this.props.handleSourceStationIDInput} value={this.props.sourceStation} placeholder="Enter Source Station ID..." />
                                     </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="dest" className="col-md-3 control-label">Destination Station:</label>
+                                <label htmlFor="dest" className="col-md-3 control-label">Dest Station ID:</label>
                                     <div className="col-md-9 pull-left">
-                                        <select className="form-control" id="dest">
-                                            <option>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                        </select>
-                                      </div>
-                            </div>
-                            <div className="form-group">
-                              <label htmlFor="train" className="col-md-3 control-label">Train:</label>
-                                  <div className="col-md-9 pull-left">
-                                      <select className="form-control" id="train">
-                                          <option>01</option>
-                                          <option>02</option>
-                                          <option>03</option>
-                                      </select>
+                                        <input className="form-control" onChange={this.props.handleDestinationStationIDInput} value={this.props.destinationStation} placeholder="Enter Destination Station ID..." />
                                     </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="journ" className="col-md-3 control-label">Duration (Mins):</label>
+                              <label htmlFor="train" className="col-md-3 control-label">Train ID:</label>
+                                  <div className="col-md-9 pull-left">
+                                      <input className="form-control" onChange={this.props.handleTrainIDInput} value={this.props.train} placeholder="Enter TrainID..." />
+                                    </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="journ" className="col-md-3 control-label">Duration:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="journ" placeholder="Enter Journey Duration..." />
+                                    <input className="form-control" onChange={this.props.handleDurationInput} value={this.props.duration} placeholder="Enter Journey Duration..." />
                                 </div>
                             </div>
                             <div className="form-group">

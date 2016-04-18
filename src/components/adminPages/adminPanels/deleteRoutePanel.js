@@ -11,11 +11,11 @@ var DeleteRoutePanel = React.createClass({
                       <div className="panel-body">
                           <h4>Delete Route</h4>
                           <br/>
-                          <form className="form-horizontal">
+                          <form className="form-horizontal" onSubmit={this.props.handleRouteDelete}>
                             <div className="form-group">
                                 <label htmlFor="scheduleID" className="col-md-3 control-label">Route ID:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="scheduleID" placeholder="Enter Schedule ID..." />
+                                    <input className="form-control" onChange={this.props.handleRouteIDInput} value={this.props.routeID} placeholder="Enter Route ID..." />
                                 </div>
                             </div>
                             <div className="form-group">

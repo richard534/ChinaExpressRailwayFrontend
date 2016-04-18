@@ -49,7 +49,6 @@ var TrainManagementPage = React.createClass({
         });
     },
 
-    // TODO add train deletion
     handleTrainDelete: function(e) {
         e.preventDefault();
         var token = auth.getToken();

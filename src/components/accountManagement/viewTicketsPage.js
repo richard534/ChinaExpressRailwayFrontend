@@ -68,9 +68,9 @@ var ViewTickesPage = React.createClass({
            }
 
            var departureDate = new Date(ticket.schedule.departureDate).toDateString();
-           var departureTime = new Date(ticket.schedule.departureTime).toDateString();
+           var departureTime = new Date(ticket.schedule.departureTime).toTimeString().substring(0, 8);
            var arrivalDate = new Date(ticket.schedule.arrivalDate).toDateString();
-           var arrivalTime = new Date(ticket.schedule.arrivalTime).toDateString();
+           var arrivalTime = new Date(ticket.schedule.arrivalTime).toTimeString().substring(0, 8);
 
             return (
                 <tr key={ticket.ticketID}>
