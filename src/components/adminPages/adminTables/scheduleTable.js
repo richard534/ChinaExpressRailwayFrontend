@@ -6,6 +6,11 @@ var Link = Router.Link;
 var _ = require('lodash');
 
 var ScheduleTable = React.createClass({
+    getDefaultProps: function() {
+        return {
+            schedules: []
+        };
+    },
 
    render: function() {
        var table;
@@ -39,6 +44,7 @@ var ScheduleTable = React.createClass({
         };
 
        var renderscheduleTable = function() {
+           console.log(schedules);
            return (
                <table className="table table-bordered table-striped">
                   <tr>

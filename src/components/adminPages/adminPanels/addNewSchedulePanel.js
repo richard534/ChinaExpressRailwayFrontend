@@ -6,13 +6,27 @@ var AddNewSchedulePanel = React.createClass({
 
     departureDateClickHandler: function(event) {
         event.preventDefault();
-        $("#departureDate").datepicker();
+        var self = this;
+        $("#departureDate").datepicker({
+            onSelect: function(date) {
+                self.handleChange();
+            },
+            startDate: Date.now(),
+            minDate: 0
+        });
         this.handleChange();
     },
 
     arrivalDateClickHandler: function(event) {
         event.preventDefault();
-        $("#arrivalDate").datepicker();
+        var self = this;
+        $("#arrivalDate").datepicker({
+            onSelect: function(date) {
+                self.handleChange();
+            },
+            startDate: Date.now(),
+            minDate: 0
+        });
         this.handleChange();
     },
 

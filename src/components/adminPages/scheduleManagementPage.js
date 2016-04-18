@@ -112,8 +112,6 @@ var ScheduleManagementPage = React.createClass({
             availableSecondClass: "90"
         };
 
-        console.log(data);
-
         return $.ajax({
           type: "post",
           headers: {
@@ -122,13 +120,14 @@ var ScheduleManagementPage = React.createClass({
           data: data,
           contentType: 'application/x-www-form-urlencoded',
           url: 'http://52.31.154.40:8087/schedule/addSchedule',
-          dataType: 'text', // The type of data that you're expecting back from the server
+          dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
                   toastr.error('Failed to add schedule');
               } else if(results === "true"){
                   self.setState({schedules: results});
               }
+              location.reload();
           },
           error: function(jqXHR, textStatus, errorThrown) {
               toastr.error('Failed to add schedule');
