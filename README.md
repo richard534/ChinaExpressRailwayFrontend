@@ -13,4 +13,4 @@ To install: (Make sure nodejs v5.0^ is installed (to get NPM))
 
 >3. run "npm install -g gulp"
 
->4. Open browser at "http://localhost:9010
+>4. Open browser at "http://localhost:9010"
