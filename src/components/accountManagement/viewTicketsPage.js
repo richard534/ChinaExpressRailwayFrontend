@@ -60,12 +60,29 @@ var ViewTickesPage = React.createClass({
        };
 
        var createTicketRow = function(ticket) {
+           console.log(ticket);
+           var status = ticket.cancelled;
+           if(status === "true"){
+               status = "Cancelled";
+           } else {
+               status = "Not Cancelled";
+           }
+
+           var departureDate = new Date(ticket.schedule.departureDate).toDateString();
+           var departureTime = new Date(ticket.schedule.departureTime).toDateString();
+           var arrivalDate = new Date(ticket.schedule.arrivalDate).toDateString();
+           var arrivalTime = new Date(ticket.schedule.arrivalTime).toDateString();
+
             return (
-                <tr key={ticket.routeID}>
-                    <td>{ticket.ticketNum}</td>
-                    <td>{ticket.departureDate}</td>
-                    <td>{ticket.depaertureTime}</td>
-                    <td>{ticket.status}</td>
+                <tr key={ticket.ticketID}>
+                    <td>{ticket.ticketID}</td>
+                    <td>{ticket.schedule.trainRoute.sourceStation.name}</td>
+                    <td>{ticket.schedule.trainRoute.arrivalStation.name}</td>
+                    <td>{departureDate}</td>
+                    <td>{departureTime}</td>
+                    <td>{arrivalDate}</td>
+                    <td>{arrivalTime}</td>
+                    <td>{status}</td>
                 </tr>
             );
         };
@@ -74,10 +91,13 @@ var ViewTickesPage = React.createClass({
            return (
                <table className="table table-bordered table-striped">
                   <tr>
-                     <td>Route</td>
-                     <td>TicketNum</td>
-                     <td>Departure Date/Time</td>
-                     <td>Arrival Date/Time</td>
+                     <td>TicketID</td>
+                     <td>Departure Station</td>
+                     <td>Arrival Station</td>
+                     <td>Departure Date</td>
+                     <td>Departure Time</td>
+                     <td>Arrival Date</td>
+                     <td>Arrival Time</td>
                      <td>Status</td>
                  </tr>
                  <tr>
