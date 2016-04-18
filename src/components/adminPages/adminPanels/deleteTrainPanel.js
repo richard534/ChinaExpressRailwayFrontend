@@ -11,11 +11,11 @@ var DeleteTrainPanel = React.createClass({
                       <div className="panel-body">
                           <h4>Delete Train</h4>
                           <br/>
-                          <form className="form-horizontal">
+                          <form className="form-horizontal" onSubmit={this.props.handleTrainDelete}>
                             <div className="form-group">
                                 <label htmlFor="stationName" className="col-md-3 control-label">Train ID:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="stationName" placeholder="Enter Train ID..." />
+                                    <input className="form-control" id="stationName" value={this.props.trainID} onChange={this.props.handletrainIDInput} placeholder="Enter Train ID..." />
                                 </div>
                             </div>
                             <div className="form-group">

@@ -15,7 +15,7 @@ var DeleteStationPanel = React.createClass({
                             <div className="form-group">
                                 <label className="col-md-3 control-label">StationId:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" onChange={this.props.handleStationIDInput} placeholder="Enter Station ID..." />
+                                    <input className="form-control" value={this.props.stationID} onChange={this.props.handleStationIDInput} placeholder="Enter Station ID..." />
                                 </div>
                             </div>
                             <div className="form-group">

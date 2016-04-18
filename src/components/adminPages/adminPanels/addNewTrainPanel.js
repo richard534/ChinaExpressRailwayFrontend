@@ -12,29 +12,29 @@ var AddNewTrainPanel = React.createClass({
                       <div className="panel-body">
                           <h4>Add New Train</h4>
                           <br/>
-                          <form className="form-horizontal">
+                          <form className="form-horizontal" onSubmit={this.props.handleAddtrain}>
                             <div className="form-group">
                                 <label htmlFor="trainName" className="col-md-3 control-label">Train Name:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="trainName" placeholder="Enter Train Name..." />
+                                    <input className="form-control" value={this.props.trainName} onChange={this.props.handletrainNameInput} id="trainName" placeholder="Enter Train Name..." />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="maxSeats" className="col-md-3 control-label">Max Seats:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="maxSeats" placeholder="Enter Max Seats..." />
+                                    <input className="form-control" value={this.props.maxSeats} onChange={this.props.handletrainMaxSeatsInput} id="maxSeats" placeholder="Enter Max Seats..." />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="numFirstClassSeats" className="col-md-3 control-label">Num First Class Seats:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="numFirstClassSeats" placeholder="Enter Number of First Class Seats..." />
+                                    <input className="form-control" value={this.props.numFCSeats} onChange={this.props.handletrainNumFCSeatsInput} id="numFirstClassSeats" placeholder="Enter Number of First Class Seats..." />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="numStandardClassSeats" className="col-md-3 control-label">Num Standard Class Seats:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="numStandardClassSeats" placeholder="Enter Number of Standard Class Seats..." />
+                                    <input className="form-control" value={this.props.numSCSeats} onChange={this.props.handletrainNumSCSeatsInput} id="numStandardClassSeats" placeholder="Enter Number of Standard Class Seats..." />
                                 </div>
                             </div>
                             <div className="form-group">
