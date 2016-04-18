@@ -11,11 +11,11 @@ var DeleteSchedulePanel = React.createClass({
                       <div className="panel-body">
                           <h4>Delete Schedule</h4>
                           <br/>
-                          <form className="form-horizontal">
+                          <form className="form-horizontal" onSubmit={this.props.handleDeleteSchedule}>
                             <div className="form-group">
                                 <label htmlFor="scheduleID" className="col-md-3 control-label">Schedule ID:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="scheduleID" placeholder="Enter Schedule ID..." />
+                                    <input className="form-control" id="scheduleID" value={this.props.scheduleID} onChange={this.props.handleScheduleIDInput} placeholder="Enter Schedule ID..." />
                                 </div>
                             </div>
                             <div className="form-group">
