@@ -60,7 +60,6 @@ var ViewTickesPage = React.createClass({
        };
 
        var createTicketRow = function(ticket) {
-           console.log(ticket);
            var status = ticket.cancelled;
            if(status === "true"){
                status = "Cancelled";

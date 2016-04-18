@@ -12,17 +12,17 @@ var AddNewStationPanel = React.createClass({
                       <div className="panel-body">
                           <h4>Add New Station</h4>
                           <br/>
-                          <form className="form-horizontal">
+                          <form className="form-horizontal" onSubmit={this.props.handleAddStation}>
                             <div className="form-group">
                                 <label htmlFor="stationName" className="col-md-3 control-label">Station Name:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="stationName" placeholder="Enter Station Name..." />
+                                    <input className="form-control" onChange={this.props.handleStationNameInput} id="stationName" placeholder="Enter Station Name..." />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="ticketID" className="col-md-3 control-label">Station Address:</label>
                                 <div className="col-md-9">
-                                    <input className="form-control" id="ticketID" placeholder="Enter Station Address..." />
+                                    <input className="form-control" onChange={this.props.handleStationAddressInput} id="ticketID" placeholder="Enter Station Address..." />
                                 </div>
                             </div>
                             <div className="form-group">
