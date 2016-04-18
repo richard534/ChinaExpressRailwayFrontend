@@ -51,7 +51,7 @@ var MyAccountPage = auth.requireAuth(React.createClass({
        return (
            <div className="container">
                 <div className="col-md-12">
-                    <h1>Welcome Back Richard</h1>
+                    <h1>Welcome Back {this.state.username}</h1>
                     <br/>
                 </div>
                 {panels}
