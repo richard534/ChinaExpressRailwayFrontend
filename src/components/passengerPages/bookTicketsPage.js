@@ -240,7 +240,15 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         };
 
         this.setState({selectedTicket: selectedTicket});
-        this.setState({continueBtn: false}); // Enable continue button on summary panel
+
+        var dateTwoDaysAhead = new Date();
+        var numberOfDaysToAdd = 2;
+        dateTwoDaysAhead.setDate(dateTwoDaysAhead.getDate() + numberOfDaysToAdd);
+        if(selectedScheduleDate < dateTwoDaysAhead) {
+            toastr.error("First class ticket booking must be two days in advance");
+        } else {
+            this.setState({continueBtn: false}); // Enable continue button on summary panel
+        }
     },
 
 
