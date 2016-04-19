@@ -165,7 +165,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           url: 'http://localhost:8087/schedule/getSchedules',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
-              if(_.isEmpty(results)){
+              if(_.isEmpty(results) || results.length < 3){
                   toastr.error('No tickets found');
                   self.setState({schedulesFound: false});
                   return;
@@ -241,11 +241,16 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
 
         this.setState({selectedTicket: selectedTicket});
 
+        var currentDate = new Date();
         var dateTwoDaysAhead = new Date();
         var numberOfDaysToAdd = 2;
         dateTwoDaysAhead.setDate(dateTwoDaysAhead.getDate() + numberOfDaysToAdd);
-        if(selectedScheduleDate < dateTwoDaysAhead) {
-            toastr.error("First class ticket booking must be two days in advance");
+        if(selectedScheduleClass === "First"){
+            if(currentDate < dateTwoDaysAhead) {
+                toastr.error("First class ticket booking must be two days in advance");
+                this.setState({continueBtn: true}); // Disable continue button on summary panel
+                return;
+            }
         } else {
             this.setState({continueBtn: false}); // Enable continue button on summary panel
         }
