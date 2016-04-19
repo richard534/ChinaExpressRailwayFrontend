@@ -90,7 +90,7 @@ var EmployeeConfirmBookingPage = React.createClass({
           },
           data: data, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/employee/bookTicket',
+          url: 'http://localhost:8087/employee/bookTicket',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               toastr.success('Booking successful.');

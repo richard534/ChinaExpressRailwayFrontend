@@ -84,7 +84,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
               "station": sourceStationName
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/station',
+          url: 'http://localhost:8087/train/station',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
@@ -118,7 +118,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
               "station": destinationStationName
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/station',
+          url: 'http://localhost:8087/train/station',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
@@ -162,7 +162,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
           type: "post",
           data: data, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/schedule/getSchedules',
+          url: 'http://localhost:8087/schedule/getSchedules',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)){
@@ -240,7 +240,15 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         };
 
         this.setState({selectedTicket: selectedTicket});
-        this.setState({continueBtn: false}); // Enable continue button on summary panel
+
+        var dateTwoDaysAhead = new Date();
+        var numberOfDaysToAdd = 2;
+        dateTwoDaysAhead.setDate(dateTwoDaysAhead.getDate() + numberOfDaysToAdd);
+        if(selectedScheduleDate < dateTwoDaysAhead) {
+            toastr.error("First class ticket booking must be two days in advance");
+        } else {
+            this.setState({continueBtn: false}); // Enable continue button on summary panel
+        }
     },
 
 

@@ -60,11 +60,11 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
         var URL;
 
         if(auth.loggedInAsPassenger()){
-            URL = "http://52.31.154.40:8087/passenger/getPassengerAccount";
+            URL = "http://localhost:8087/passenger/getPassengerAccount";
         } else if(auth.loggedInAsAdmin()){
-            URL = "http://52.31.154.40:8087/admin/getAdminAccount";
+            URL = "http://localhost:8087/admin/getAdminAccount";
         } else if(auth.loggedInAsEmployee()){
-            URL = "http://52.31.154.40:8087/employee/getEmployeeAccount";
+            URL = "http://localhost:8087/employee/getEmployeeAccount";
         } else {
             return;
         }
@@ -128,13 +128,13 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
 
         if(auth.loggedInAsPassenger()){
             id = auth.getPassengerId();
-            URL = "http://52.31.154.40:8087/passenger/updatePassengerAccount";
+            URL = "http://localhost:8087/passenger/updatePassengerAccount";
         } else if(auth.loggedInAsAdmin()){
             id = auth.getAdminId();
-            URL = "http://52.31.154.40:8087/admin/updateAccountAdmin";
+            URL = "http://localhost:8087/admin/updateAccountAdmin";
         } else if(auth.loggedInAsEmployee()){
             id = auth.getEmployeeId();
-            URL = "http://52.31.154.40:8087/employee/updateEmployeeAccount";
+            URL = "http://localhost:8087/employee/updateEmployeeAccount";
         } else {
             return;
         }

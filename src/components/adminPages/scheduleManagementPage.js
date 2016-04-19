@@ -39,7 +39,7 @@ var ScheduleManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/schedule/getAllSchedules',
+          url: 'http://localhost:8087/schedule/getAllSchedules',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
@@ -69,7 +69,7 @@ var ScheduleManagementPage = React.createClass({
           },
           data: data,
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/schedule/deleteSchedule',
+          url: 'http://localhost:8087/schedule/deleteSchedule',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){
@@ -119,7 +119,7 @@ var ScheduleManagementPage = React.createClass({
           },
           data: data,
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/schedule/addSchedule',
+          url: 'http://localhost:8087/schedule/addSchedule',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {

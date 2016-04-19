@@ -16,7 +16,7 @@ function requestAuthentication(username, pass, cb) {
             type: "post",
             data: data,
             dataType: 'text',
-            url: 'http://52.31.154.40:8087/checkDetails',
+            url: 'http://localhost:8087/checkDetails',
             success: function(tokenResults) {
                 if(_.isObject(tokenResults) || tokenResults === "failed"){
                     cb({
@@ -66,7 +66,7 @@ function getAdminAccount(username, token, cb) {
             "Authorization": token
         },
         dataType: 'json', // The type of data that you're expecting back from the server
-        url: 'http://52.31.154.40:8087/admin/getAdminAccount?username=' + username,
+        url: 'http://localhost:8087/admin/getAdminAccount?username=' + username,
         success: function(result) {
             cb({
                 Id: result.adminId,
@@ -86,7 +86,7 @@ function getEmployeeAccount(username, token, cb) {
             "Authorization": token
         },
         dataType: 'json', // The type of data that you're expecting back from the server
-        url: 'http://52.31.154.40:8087/employee/getEmployeeAccount?username=' + username,
+        url: 'http://localhost:8087/employee/getEmployeeAccount?username=' + username,
         success: function(result) {
             cb({
                 Id: result.employeeId,
@@ -106,7 +106,7 @@ function getPassengerAccount(username, token, cb) {
             "Authorization": token
         },
         dataType: 'json', // The type of data that you're expecting back from the server
-        url: 'http://52.31.154.40:8087/passenger/getPassengerAccount?username=' + username,
+        url: 'http://localhost:8087/passenger/getPassengerAccount?username=' + username,
         success: function(result) {
             cb({
                 Id: result.passengerID,

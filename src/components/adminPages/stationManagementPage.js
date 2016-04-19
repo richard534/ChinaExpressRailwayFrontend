@@ -32,7 +32,7 @@ var StationManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/station',
+          url: 'http://localhost:8087/train/station',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
@@ -68,7 +68,7 @@ var StationManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/addStation',
+          url: 'http://localhost:8087/train/addStation',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){

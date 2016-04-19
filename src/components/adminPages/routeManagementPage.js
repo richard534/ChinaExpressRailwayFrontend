@@ -35,7 +35,7 @@ var RouteManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/getAllTrainRoutes',
+          url: 'http://localhost:8087/train/getAllTrainRoutes',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
@@ -62,7 +62,7 @@ var RouteManagementPage = React.createClass({
               trainRouteID: this.state.routeID
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/deleteTrainRoute',
+          url: 'http://localhost:8087/train/deleteTrainRoute',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){
@@ -96,7 +96,7 @@ var RouteManagementPage = React.createClass({
               "Authorization": token
           },
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/train/addTrainRoute',
+          url: 'http://localhost:8087/train/addTrainRoute',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(results === false){

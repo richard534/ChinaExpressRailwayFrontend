@@ -34,7 +34,7 @@ var ViewTickesPage = React.createClass({
               "passengerID": passengerID
           }, // Data to be sent to the server
           contentType: 'application/x-www-form-urlencoded',
-          url: 'http://52.31.154.40:8087/ticket/previousTickets',
+          url: 'http://localhost:8087/ticket/previousTickets',
           dataType: 'json', // The type of data that you're expecting back from the server
           success: function(results) {
               if(_.isEmpty(results)) {
