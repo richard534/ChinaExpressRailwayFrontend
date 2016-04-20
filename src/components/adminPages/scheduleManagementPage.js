@@ -29,6 +29,7 @@ var ScheduleManagementPage = React.createClass({
         this.getSchedules();
     },
 
+    // get schedules from web server
     getSchedules: function() {
         var self = this;
         var token = auth.getToken();
@@ -53,6 +54,7 @@ var ScheduleManagementPage = React.createClass({
         });
     },
 
+    // handle delete schedule
     handleDeleteSchedule: function(e) {
         e.preventDefault();
         var token = auth.getToken();
@@ -86,7 +88,7 @@ var ScheduleManagementPage = React.createClass({
 
     },
 
-    // TODO finish add schedule functionality
+    // handle add schedule functionality
     handleAddSchedule: function(e) {
         e.preventDefault();
         var self = this;
@@ -135,6 +137,7 @@ var ScheduleManagementPage = React.createClass({
         });
     },
 
+    // set component state to user input
     onAddScheduleUpdate: function(val) {
         this.setState({ trainRoute: val.routeID});
         this.setState({departureDate: val.depDate});
@@ -145,6 +148,7 @@ var ScheduleManagementPage = React.createClass({
         this.setState({arrivalTimeMin: val.arrTimeM});
     },
 
+    // set component state to user input
     handleScheduleIDInput: function(e) {
       var value = e.target.value;
       this.setState({scheduleID: value});

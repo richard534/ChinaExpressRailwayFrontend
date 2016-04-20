@@ -25,6 +25,7 @@ var RouteManagementPage = React.createClass({
         this.getRoutes();
     },
 
+    // get routes object from server
     getRoutes: function() {
         var self = this;
         var token = auth.getToken();
@@ -49,6 +50,7 @@ var RouteManagementPage = React.createClass({
         });
     },
 
+    // handle deletion of route using ajax call to web service
     handleRouteDelete: function(e) {
         e.preventDefault();
         var token = auth.getToken();
@@ -78,6 +80,7 @@ var RouteManagementPage = React.createClass({
         });
     },
 
+    // handle adding route to web server
     handleAddRoute: function(e) {
         e.preventDefault();
         var token = auth.getToken();

@@ -21,6 +21,7 @@ var bookTicketsPanel = React.createClass({
         };
     },
 
+    // Handle jquery UI datepicker rendering
     dateClickHandler: function(event) {
         var self = this;
         event.preventDefault();
@@ -33,6 +34,7 @@ var bookTicketsPanel = React.createClass({
         });
     },
 
+    // Handle user input and update state accordingly
     handleChange: function() {
         var values = {
             sourceStation: this.refs.from.getDOMNode().value,
@@ -48,6 +50,7 @@ var bookTicketsPanel = React.createClass({
         e.preventDefault();
     },
 
+    // Handle ajax call to webservice on user input to retieve autocompletion string
     autoCompleteSourceStation: function() {
         $("#from").autocomplete({
             source: function (request, response) {
@@ -70,6 +73,7 @@ var bookTicketsPanel = React.createClass({
         });
     },
 
+    // Handle ajax call to webservice on user input to retieve autocompletion string
     autoCompleteDestinationStation: function() {
         $("#to").autocomplete({
             source: function (request, response) {

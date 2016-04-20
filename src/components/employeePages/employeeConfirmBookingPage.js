@@ -60,6 +60,7 @@ var EmployeeConfirmBookingPage = React.createClass({
         this.setState({class: this.props.query.class});
     },
 
+    // handle submission of booknow button to the webservice
     handleSubmit: function() {
         var self = this;
         var token = auth.getToken();
@@ -102,6 +103,7 @@ var EmployeeConfirmBookingPage = React.createClass({
         });
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {

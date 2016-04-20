@@ -3,7 +3,7 @@
 var React = require('react');
 var StationTable = require('./adminTables/stationTable');
 var AddNewStationPanel = require('./adminPanels/addNewStationPanel');
-var DeleteStationPanel = require('./adminPanels/deleteStationPanel');
+//var DeleteStationPanel = require('./adminPanels/deleteStationPanel');
 var auth = require('../auth/auth.js');
 var toastr = require('toastr');
 var _ = require('lodash');
@@ -13,8 +13,8 @@ var StationManagementPage = React.createClass({
         return {
             stations: [],
             stationName: "",
-            stationAddress: "",
-            stationID: ""
+            stationAddress: ""
+            //stationID: ""
         };
     },
 
@@ -46,11 +46,12 @@ var StationManagementPage = React.createClass({
         });
     },
 
-    // TODO add station deletion
+    /*
     handleStationDelete: function(e) {
         e.preventDefault();
         console.log("Delete Station");
     },
+    */
 
     handleAddStation: function(e) {
         e.preventDefault();
@@ -94,10 +95,12 @@ var StationManagementPage = React.createClass({
       this.setState({stationAddress: value});
     },
 
+    /*
     handleStationIDInput: function(e) {
       var value = e.target.value;
       this.setState({stationID: value});
     },
+    */
 
    render: function() {
        return (
@@ -113,10 +116,14 @@ var StationManagementPage = React.createClass({
                     handleStationNameInput={this.handleStationNameInput}
                     handleStationAddressInput={this.handleStationAddressInput}
                     handleAddStation={this.handleAddStation} />
-                <DeleteStationPanel
-                    stationID={this.state.stationID}
-                    handleStationIDInput={this.handleStationIDInput}
-                    handleStationDelete={this.handleStationDelete} />
+
+                {/* // Removed due to lack of web service functionality
+                    <DeleteStationPanel
+                        stationID={this.state.stationID}
+                        handleStationIDInput={this.handleStationIDInput}
+                        handleStationDelete={this.handleStationDelete} />
+                */}
+
                 <StationTable
                     stations={this.state.stations} />
 

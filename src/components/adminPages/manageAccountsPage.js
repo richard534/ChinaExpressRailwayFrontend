@@ -7,6 +7,7 @@ var validate = require('validate.js');
 var auth = require('../auth/auth.js');
 var toastr = require('toastr');
 
+// Constraints tested against create account user input
 var constraints = {
     accountType: {
         presence: true
@@ -55,6 +56,7 @@ var ManageAccountsPage = React.createClass({
         };
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {

@@ -8,6 +8,10 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var Redirect = Router.Redirect;
 
+// Each route present in the system is defined here along with the parameters nessesary to visit them.
+// Each route has associated name for ease of use in codebase
+// Default route defines the initial page to be rendered
+// NotFoundRoute defines the page to be rendered if no resource is found
 var routes = (
     <Route name="app" path="/" handler={require('./components/app')}>
       <DefaultRoute handler={require('./components/passengerPages/passengerHomePage')} />

@@ -3,6 +3,7 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
+// 404 Not found page, presented when invalid URL entered
 var NotFoundPage = React.createClass({
   render: function() {
     return (

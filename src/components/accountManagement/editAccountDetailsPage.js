@@ -97,6 +97,7 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {

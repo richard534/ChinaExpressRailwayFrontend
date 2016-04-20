@@ -34,6 +34,7 @@ var passengerHomePage = React.createClass({
         };
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {
@@ -46,6 +47,7 @@ var passengerHomePage = React.createClass({
         }, this.validate);
     },
 
+    // Validate user input against contrains object
     validate: function () {
         var validationErrors = validate(this.state.data, constraints);
 

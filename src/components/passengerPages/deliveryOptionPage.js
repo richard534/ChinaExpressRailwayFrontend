@@ -38,6 +38,7 @@ var deliveryOptionPage = React.createClass({
         this.getPassengerEmail();
     },
 
+    // Get customer email using logged in users username
     getPassengerEmail: function() {
         var self = this;
         var token = auth.getToken();

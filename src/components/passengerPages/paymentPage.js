@@ -45,6 +45,7 @@ var paymentPage = React.createClass({
         this.getPassengerDetails();
     },
 
+    // Get passenger details from web service using logged in users username
     getPassengerDetails: function() {
         var self = this;
         var token = auth.getToken();
@@ -74,6 +75,7 @@ var paymentPage = React.createClass({
         });
     },
 
+    // handle submission of paynow button to the webservice
     handleSubmit: function() {
         var self = this;
         var token = auth.getToken();

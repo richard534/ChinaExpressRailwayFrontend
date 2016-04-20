@@ -73,6 +73,7 @@ var ManageWalletPage = React.createClass({
         this.getPassengerAccount();
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {

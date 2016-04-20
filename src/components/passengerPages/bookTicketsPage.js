@@ -74,6 +74,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
 
     },
 
+    // AJAX call to retrieve ID of source station using station name
     getSourceStation: function(cb) {
         var self = this;
         var sourceStationName = this.state.sourceStation.sourceStationName;
@@ -108,6 +109,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    // AJAX call to retrieve ID of destination station using station name
     getDestStation: function(cb) {
         var self = this;
         var destinationStationName = this.state.destinationStation.destinationStationName;
@@ -142,7 +144,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
-
+    // function to retrieve schedules from web service using the sourceStationID, destStationID, depDate and depTime
     getSchedules: function() {
 
         var requestedDate = new Date(this.state.requestedParameters.requestedDepartureDate);
@@ -210,6 +212,7 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    // function to handle user input, sets react state to provided input
     onUpdate: function(val){
         var numTickets = val.numTickets;
 
@@ -219,6 +222,8 @@ var BookTicketsPage = auth.requireAuth(React.createClass({
         this.setState({numTickets: ticket});
     },
 
+    // Handles radio button selection of station, performs check that first class ticket is
+    // not being booked less then two days in advance
     handleScheduleSelection: function(e) {
         var selectedScheduleId = e.target.getAttribute('data-scheduleId');
         var selectedScheduleDate = e.target.getAttribute('data-date');

@@ -6,6 +6,7 @@ var toastr = require('toastr');
 var _ = require('lodash');
 
 // cb stands for callback
+// AJAX call to server to check user details. return false or token and username
 function requestAuthentication(username, pass, cb) {
         var data = {
             username: username,
@@ -59,6 +60,7 @@ function requestAuthentication(username, pass, cb) {
         });
 }
 
+// Rerieve admin account username and ID
 function getAdminAccount(username, token, cb) {
     return $.ajax({
         type: "get",
@@ -79,6 +81,7 @@ function getAdminAccount(username, token, cb) {
     });
 }
 
+// Rerieve employee account username and ID
 function getEmployeeAccount(username, token, cb) {
     return $.ajax({
         type: "get",
@@ -99,6 +102,7 @@ function getEmployeeAccount(username, token, cb) {
     });
 }
 
+// Rerieve admin passenger username and ID
 function getPassengerAccount(username, token, cb) {
     return $.ajax({
         type: "get",
@@ -120,6 +124,7 @@ function getPassengerAccount(username, token, cb) {
 }
 
 module.exports = {
+    // Login function to handle login requests
     login: function login(username, pass, cb) {
         if(!username || !pass) {
             cb(false);
@@ -127,6 +132,7 @@ module.exports = {
         }
         var _this = this;
 
+        // Check local storage for existing token
         cb = arguments[arguments.length - 1];
         if (localStorage.token) {
           if (cb) {cb(true); }
@@ -134,6 +140,7 @@ module.exports = {
           return;
         }
 
+        // If no token in local storage, request auth from server
         requestAuthentication(username, pass, function(res) {
             if (res.authenticated) {
                 localStorage.token = res.token;
@@ -171,32 +178,39 @@ module.exports = {
 
     },
 
+    // get token from localstorage
     getToken: function getToken() {
         return localStorage.token;
     },
 
+    // get passengerID from localstorage
     getPassengerId: function getPassengerId() {
         return localStorage.passengerId;
     },
 
+    // // get adminID from localstorage
     getAdminId: function getAdminId() {
         return localStorage.adminId;
     },
 
+    // get employeeID from localstorage
     getEmployeeId: function getEmployeeId() {
         return localStorage.employeeId;
     },
 
+    // get username from localstorage
     getUsername: function getUsername() {
         return localStorage.username;
     },
 
+    // Logout, clear localstorage
     logout: function logout(cb) {
         localStorage.clear();
         if (cb) {cb(); }
         this.onChange(false);
     },
 
+    // Check if localstorage token is present
     loggedIn: function loggedIn() {
         return !!localStorage.token;
     },
@@ -218,6 +232,10 @@ module.exports = {
 
     onChange: function onChange() {},
 
+    // function to restrict access to certain react components
+    // component is passed to function as paramter
+    // function returns redirect to signin if logged in user does not match role required parameter
+    // else user is allowed access to page
     requireAuth: function(Component, roleRequired) {
         var self = this;
         return React.createClass({

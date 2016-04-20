@@ -74,6 +74,7 @@ var EmployeeBookTicketsPage = auth.requireAuth(React.createClass({
 
     },
 
+    // get soruce station id using sourcestation name
     getSourceStation: function(cb) {
         var self = this;
         var sourceStationName = this.state.sourceStation.sourceStationName;
@@ -108,6 +109,7 @@ var EmployeeBookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    // get destination station id using destinationstation name
     getDestStation: function(cb) {
         var self = this;
         var destinationStationName = this.state.destinationStation.destinationStationName;
@@ -142,7 +144,7 @@ var EmployeeBookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
-
+    // function to retrieve schedules from web service using the sourceStationID, destStationID, depDate and depTime
     getSchedules: function() {
 
         var requestedDate = new Date(this.state.requestedParameters.requestedDepartureDate);
@@ -210,6 +212,7 @@ var EmployeeBookTicketsPage = auth.requireAuth(React.createClass({
         });
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         var numTickets = val.numTickets;
 

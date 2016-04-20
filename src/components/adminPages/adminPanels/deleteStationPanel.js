@@ -1,3 +1,6 @@
+/*
+// Removed due to lack of web service functionality
+
 "use strict";
 
 var React = require('react');
@@ -32,3 +35,4 @@ var DeleteStationPanel = React.createClass({
 });
 
 module.exports = DeleteStationPanel;
+*/

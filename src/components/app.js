@@ -6,6 +6,7 @@ var Header = require('./common/header');
 var Footer = require('./common/footer');
 $ = jQuery = require('jquery');
 
+// Main parent react component handles mounting the header, react-router routehandler and footer
 var App = React.createClass({
    render: function() {
        return (

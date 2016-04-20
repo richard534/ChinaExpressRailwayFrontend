@@ -53,6 +53,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         };
     },
 
+    // set this components state to user input
     onUpdate: function(val){
         this.setState({
             data: {
@@ -76,7 +77,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
     },
 
 
-
+    // Handle ajax call to server to delete ticket by ticketID
     handleDeleteTicketSubmit: function(e) {
         e.preventDefault();
 
@@ -103,6 +104,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         });
     },
 
+    // handler method for updating ticketID field after user input
     handleTicketIdChange: function() {
         this.setState({
             ticket: {
@@ -111,6 +113,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         }, this.validateTicket);
     },
 
+    // validate entered ticket string against ticketConstraints object
     validateTicket: function () {
         var validationErrors = validate(this.state.ticket, ticketConstraints);
         if(validationErrors){
@@ -120,6 +123,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         }
     },
 
+    // Retrieve canceled tickets report object from webservice and set it to state
     getCanceledTicketsReport: function() {
         var self = this;
         var token = auth.getToken();
@@ -149,6 +153,7 @@ var employeeHomePage = auth.requireAuth(React.createClass({
         });
     },
 
+    // Retrieve booked tickets report object from webservice and set it to state
     getBookedTrainsReport: function() {
         var self = this;
         var token = auth.getToken();

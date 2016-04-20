@@ -22,6 +22,7 @@ var ticketSummaryPanel = React.createClass({
         };
     },
 
+    // Handle user input and pass to parent react component to set state of parent
     handleChange: function() {
         var values = {
             numTickets: this.refs.numTicket.getDOMNode().value
