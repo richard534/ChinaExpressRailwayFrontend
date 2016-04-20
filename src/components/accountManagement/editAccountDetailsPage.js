@@ -52,6 +52,7 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
         };
     },
 
+    // On component mount insert logged in accounts details into fields
     componentWillMount: function() {
         var self = this;
 
@@ -121,6 +122,7 @@ var EditAccountDetailsPage = auth.requireAuth(React.createClass({
             }
     },
 
+    // Handle submit update user details to server
     handleSubmit: function(e) {
         var self = this;
         e.preventDefault();
