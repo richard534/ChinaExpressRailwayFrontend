@@ -150,7 +150,7 @@ var EmployeeBookTicketsPage = auth.requireAuth(React.createClass({
         var requestedDate = new Date(this.state.requestedParameters.requestedDepartureDate);
         var departureDate = requestedDate.toString("ddd, MMM dd yyyy");
 
-        var departureTime = this.state.requestedParameters.requestedDepartureTimeHour + ":" + this.state.requestedParameters.requestedDepartureTimeMin;
+        var departureTime = this.state.requestedParameters.requestedDepartureTimeHour + ":" + this.state.requestedParameters.requestedDepartureTimeMin + ":00";
 
         var data = {
             sourceStationID: this.state.sourceStation.sourceStationId,
