@@ -1,12 +1,25 @@
 # ChinaExpressRailwayFrontend
-Frontend component to the China Express Railway System. Created using ReactJS
+Created for my final year Computer Science module "Software Engineering".
+
+Frontend component to the China Express Railway System.
+
+Powered by ReactJS
 
 Associated backend system: [Here](https://github.com/dconey646/ChinaExpressRailwayWebService)
 
-Created for my final year Computer Science module "Software Engineering".
-This project is the front-end component to the "China Express Railway System"
-
-Front end powered by ReactJS
+Utillizes a number on NPM modules including:
+<ul>
+  <li>Gulp</li>
+  <li>React-Router</li>
+  <li>Bootstrap</li>
+  <li>Browserify</li>
+  <li>Reactify</li>
+  <li>Datejs</li>
+  <li>Jquery</li>
+  <li>Lodash</li>
+  <li>Toastr</li>
+  <li>Validate.js</li>
+</ul>
 
 ## Installation
 #### OSX/Windows
