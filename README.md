@@ -24,6 +24,7 @@ Utillizes a number on NPM modules including:
 ## Installation
 #### OSX/Windows
 *Backend server must be running for application to function
+
 *(Make sure nodejs v5.0^ is installed (to get NPM))
 <ol>
   <li>Clone this repository</li>
