@@ -1,4 +1,4 @@
-# ChinaExpressRailwayFrontend
+# China Express Railway Frontend
 Created for my final year Computer Science module "Software Engineering".
 
 Frontend component to the China Express Railway System.
